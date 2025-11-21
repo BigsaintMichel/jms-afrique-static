@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13 - JMS Afrique</title>
+    <title>AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13 - JMS Nouvelles</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
@@ -18,74 +18,269 @@
                     colors: {
                         'jms-blue': '#0D2A4F',
                         'jms-red': '#dc2626',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.8s ease-out forwards',
                     }
                 }
             }
         }
     </script>
+    <style>
+        /* Animations Globales */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes pillFill {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(0); }
+        }
+        
+        /* Animation Défilement (Ticker) pour Flash Infos */
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 25s linear infinite;
+        }
+        
+        /* Classes Utilitaires d'Animation */
+        .opacity-0-start { opacity: 0; }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
+        
+        /* Style Pilule Animée */
+        .pill-appear {
+            position: relative;
+            overflow: hidden;
+        }
+        .pill-appear span.bg {
+            position: absolute;
+            inset: 0;
+            background-color: #dc2626; /* jms-red */
+            transform: translateY(100%);
+            transition: transform 0.5s ease-out;
+            z-index: 0;
+        }
+        .pill-appear:hover span.bg {
+            transform: translateY(0);
+        }
+        .pill-appear span.text {
+            position: relative;
+            z-index: 10;
+            transition: color 0.3s;
+        }
+        .pill-appear:hover span.text {
+            color: white;
+        }
+    </style>
+    
 </head>
-<body class="bg-gray-50">
-    <header class="bg-jms-blue text-white py-4 shadow-lg sticky top-0 z-50">
+<body class="bg-gray-50 font-sans flex flex-col min-h-screen">
+    
+    <!-- Bandeau Flash Infos DÉFILANT (Ticker) - Au-dessus du Header -->
+    <!-- Style : Fond blanc, Texte Rouge, Label Rouge -->
+    <div id="flashInfoBanner" class="bg-white py-2 overflow-hidden relative z-[60] border-b border-gray-200">
+        <div class="container mx-auto flex items-center">
+            <!-- Label Rouge -->
+            <div class="bg-red-600 text-white px-3 py-1 font-bold text-xs uppercase tracking-wider mr-4 z-10 shadow-sm whitespace-nowrap rounded-sm">
+                Flash Infos
+            </div>
+            <!-- Message Défilant en ROUGE -->
+            <div class="flex-1 overflow-hidden relative h-6">
+                <div class="animate-marquee font-bold text-sm text-red-600 flex items-center h-full whitespace-nowrap">
+                    <span class="mr-24"><i class="fas fa-calendar-alt mr-2 text-jms-blue"></i> AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13</span>
+                    <span class="mr-24"><i class="fas fa-calendar-alt mr-2 text-jms-blue"></i> AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13</span>
+                    <span class="mr-24"><i class="fas fa-calendar-alt mr-2 text-jms-blue"></i> AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13</span>
+                    <span class="mr-24"><i class="fas fa-calendar-alt mr-2 text-jms-blue"></i> AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Blanc -->
+    <header class="bg-white text-jms-blue py-4 shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6">
             <div class="flex items-center justify-between">
+                <!-- Logo Agrand -->
                 <a href="index.html" class="flex items-center gap-3 hover:opacity-90 transition">
-                    <img src="assets/images/logo.png" alt="JMS Logo" class="h-12">
-                    <span class="text-xl font-bold">JMS Afrique</span>
+                    <img src="assets/images/logo.png" alt="JMS Logo" class="h-24 md:h-32">
                 </a>
-                <nav class="hidden md:flex gap-6">
-                    <a href="menu.html" class="hover:text-jms-red transition font-semibold">Nouvelles</a>
-                    <a href="programmes.html" class="hover:text-jms-red transition font-semibold">Programmes</a>
-                    <a href="initiative.html" class="hover:text-jms-red transition font-semibold">Initiative</a>
-                    <a href="rejoindre.html" class="hover:text-jms-red transition font-semibold">Rejoindre</a>
-                    <a href="reseau.html" class="hover:text-jms-red transition font-semibold">Réseau</a>
-                    <a href="bibliotheque.html" class="hover:text-jms-red transition font-semibold">Bibliothèque</a>
-                </nav>
+                
+                <!-- Bouton Menu Burger -->
+                <button id="menuToggle" class="flex items-center gap-3 border-2 border-jms-blue text-jms-blue px-6 py-2 rounded-full font-bold hover:bg-jms-blue hover:text-white transition group z-[70]">
+                    <span class="uppercase tracking-widest text-sm">Menu</span>
+                    <div class="flex flex-col gap-1.5 group-hover:gap-2 transition-all">
+                        <span class="w-6 h-0.5 bg-current transition-all"></span>
+                        <span class="w-6 h-0.5 bg-current transition-all"></span>
+                        <span class="w-6 h-0.5 bg-current transition-all"></span>
+                    </div>
+                </button>
             </div>
         </div>
     </header>
+
+    <!-- Menu Overlay Plein Écran (Aligné Gauche + Flou) -->
+    <div id="mobileMenu" class="fixed inset-0 z-[60] bg-white/80 backdrop-blur-xl flex flex-col items-start justify-center opacity-0 pointer-events-none transition-opacity duration-500 pl-10 md:pl-24">
+        
+        <!-- La croix de fermeture est gérée par le bouton Menu qui change d'état -->
+        
+        <nav class="flex flex-col gap-5 w-full max-w-lg text-left">
+            <p class="text-jms-blue uppercase tracking-widest text-sm mb-4 border-b-2 border-gray-200 pb-2 w-32">Navigation</p>
+            
+            <a href="index.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
+                Accueil
+            </a>
+            <a href="menu.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
+                Nouvelles
+            </a>
+            <a href="programmes.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
+                Les Programmes
+            </a>
+            <a href="initiative.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
+                L'Initiative
+            </a>
+            <a href="rejoindre.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
+                Rejoindre
+            </a>
+            <a href="reseau.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
+                Réseau
+            </a>
+            <a href="bibliotheque.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
+                Bibliothèque
+            </a>
+            
+            <div class="mt-8 flex justify-start gap-6 text-jms-blue text-2xl pl-4">
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </nav>
+    </div>
+
+    <script>
+        // 1. Logique Conditionnelle Bandeau Flash Info (JS pur)
+        document.addEventListener('DOMContentLoaded', function() {
+            const banner = document.getElementById('flashInfoBanner');
+            const currentPath = window.location.pathname;
+            
+            // Si on est sur l'accueil (index.html ou racine), on cache le bandeau
+            if (currentPath.endsWith('index.html') || currentPath === '/' || currentPath.endsWith('/')) {
+                if(banner) banner.style.display = 'none';
+            }
+        });
+
+        // 2. Script Gestion Menu Burger (Overlay)
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const body = document.body;
+        let isMenuOpen = false;
+
+        menuToggle.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                // Ouvrir
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                menuToggle.innerHTML = '<span class="uppercase tracking-widest text-sm">Fermer</span><i class="fas fa-times text-xl ml-2"></i>';
+                menuToggle.classList.add('bg-jms-blue', 'text-white'); 
+                body.style.overflow = 'hidden';
+            } else {
+                // Fermer
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                menuToggle.innerHTML = '<span class="uppercase tracking-widest text-sm">Menu</span><div class="flex flex-col gap-1.5 group-hover:gap-2 transition-all"><span class="w-6 h-0.5 bg-current transition-all"></span><span class="w-6 h-0.5 bg-current transition-all"></span><span class="w-6 h-0.5 bg-current transition-all"></span></div>';
+                menuToggle.classList.remove('bg-jms-blue', 'text-white');
+                body.style.overflow = '';
+            }
+        });
+    </script>
     
-    <div class="container mx-auto px-6 py-12">
-    <a href="menu.html" class="inline-flex items-center gap-2 text-jms-blue hover:text-jms-red mb-6 font-semibold">
+    <!-- Contenu Principal -->
+    <main class="flex-grow">
+        <div class="container mx-auto px-6 py-12">
+    <a href="menu.html" class="inline-flex items-center gap-2 text-jms-blue hover:text-jms-red mb-8 animate-slide-in-left font-bold">
         <i class="fas fa-arrow-left"></i> Retour aux nouvelles
     </a>
-    
-    <article class="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto">
-        <div class="mb-4">
-            <span class="inline-block px-4 py-2 bg-jms-blue text-white text-sm font-semibold rounded-full">
-                <i class="fas fa-bullhorn mr-2"></i>Flash Info
-            </span>
+
+    <article class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 animate-fade-in-up delay-200">
+        <!-- Image à la une -->
+        <div class="h-64 md:h-96 w-full relative">
+            <img src="assets/images/default_news.jpg" alt="AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                <div class="p-8 w-full">
+                    <span class="bg-jms-red text-white px-3 py-1 rounded text-sm font-bold mb-3 inline-block">Actualité</span>
+                    <h1 class="text-3xl md:text-4xl font-bold text-white mb-2 text-shadow">AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13</h1>
+                    <div class="text-gray-200 text-sm"><i class="far fa-clock mr-2"></i> Publié le 20/11/2025</div>
+                </div>
+            </div>
         </div>
-        
-        <h1 class="text-4xl font-bold text-jms-blue mb-4">AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13</h1>
-        
-        <div class="flex items-center gap-4 text-gray-600 mb-6 pb-6 border-b">
-            <span><i class="far fa-calendar mr-2"></i>20/11/2025</span>
-        </div>        
-        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+
+        <!-- Contenu de l'article -->
+        <div class="p-8 md:p-12 text-gray-800 leading-relaxed text-lg">
             AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13 NOVEMBRE
+        </div>
+
+        <!-- Footer Article -->
+        <div class="bg-gray-50 p-8 border-t border-gray-100 flex justify-between items-center">
+            <div class="text-jms-blue font-bold">Partager cet article :</div>
+            <div class="flex gap-4 text-xl">
+                <a href="#" class="text-blue-600 hover:scale-110 transition"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-sky-500 hover:scale-110 transition"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-green-500 hover:scale-110 transition"><i class="fab fa-whatsapp"></i></a>
+            </div>
         </div>
     </article>
 </div>
+    </main>
     
-    <footer class="bg-jms-blue text-white py-8 mt-12">
+    <!-- Footer -->
+    <footer class="bg-jms-blue text-white py-8 mt-12 border-t border-blue-800">
         <div class="container mx-auto px-6 text-center">
-            <div class="flex justify-center gap-6 mb-4">
-                <a href="https://www.facebook.com/share/14LE77YSZtU/" target="_blank" class="hover:text-jms-red transition">
-                    <i class="fab fa-facebook-f text-2xl"></i>
-                </a>
-                <a href="https://www.instagram.com/jms_afrique" target="_blank" class="hover:text-jms-red transition">
-                    <i class="fab fa-instagram text-2xl"></i>
-                </a>
-                <a href="https://www.tiktok.com/@jms_afrique" target="_blank" class="hover:text-jms-red transition">
-                    <i class="fab fa-tiktok text-2xl"></i>
-                </a>
-                <a href="https://www.linkedin.com/company/jeunes-m%C3%A9dias-soci%C3%A9t%C3%A9/" target="_blank" class="hover:text-jms-red transition">
-                    <i class="fab fa-linkedin-in text-2xl"></i>
-                </a>
+            
+            <!-- Texte d'accroche -->
+            <p class="text-lg font-bold mb-6 font-serif">Abonne-toi ou suis-nous pour ne PLUS rien manquer !</p>
+            
+            <!-- Réseaux Sociaux -->
+            <div class="flex justify-center gap-6 mb-6">
+                <a href="https://www.facebook.com/share/14LE77YSZtU/" target="_blank" class="hover:text-jms-red transition transform hover:scale-110"><i class="fab fa-facebook-f text-2xl"></i></a>
+                <a href="https://www.instagram.com/jms_afrique" target="_blank" class="hover:text-jms-red transition transform hover:scale-110"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="https://www.tiktok.com/@jms_afrique" target="_blank" class="hover:text-jms-red transition transform hover:scale-110"><i class="fab fa-tiktok text-2xl"></i></a>
+                <a href="https://www.linkedin.com/company/jeunes-m%C3%A9dias-soci%C3%A9t%C3%A9/" target="_blank" class="hover:text-jms-red transition transform hover:scale-110"><i class="fab fa-linkedin-in text-2xl"></i></a>
+                <a href="#" target="_blank" class="hover:text-jms-red transition transform hover:scale-110"><i class="fab fa-x-twitter text-2xl"></i></a>
+                <a href="https://wa.me/message/TWROZBT5EFWPK1" target="_blank" class="hover:text-jms-red transition transform hover:scale-110"><i class="fab fa-whatsapp text-2xl"></i></a>
             </div>
-            <p>&copy; 2025 JMS Afrique. Tous droits réservés.</p>
-            <p class="text-sm mt-2">jeunesmediasetsociete@gmail.com</p>
+            
+            <!-- Contact Email -->
+            <div class="mb-4 flex items-center justify-center gap-2 text-sm">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:jeunesmediasetsociete@gmail.com" class="hover:underline hover:text-blue-200">jeunesmediasetsociete@gmail.com</a>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="text-xs text-blue-300 space-y-1">
+                <p>&copy; 2025 JMS Afrique. Tous droits réservés.</p>
+                <p class="opacity-75"><i class="fas fa-code mr-1"></i> Mention de développement</p>
+            </div>
         </div>
     </footer>
+    
+    
 </body>
 </html>
