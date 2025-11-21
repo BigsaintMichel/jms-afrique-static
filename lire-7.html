@@ -87,28 +87,88 @@
     <header class="bg-white text-jms-blue py-4 shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6">
             <div class="flex items-center justify-between">
-                <!-- Logo -->
+                <!-- Logo Agrand -->
                 <a href="index.html" class="flex items-center gap-3 hover:opacity-90 transition">
-                    <img src="assets/images/logo.png" alt="JMS Logo" class="h-16 md:h-20">
+                    <img src="assets/images/logo.png" alt="JMS Logo" class="h-24 md:h-32">
                 </a>
                 
-                <!-- Navigation (Liens bleus) -->
-                <nav class="hidden md:flex gap-8 items-center">
-                    <a href="menu.html" class="font-bold text-jms-blue hover:text-jms-red transition uppercase text-sm tracking-wide">Nouvelles</a>
-                    <a href="programmes.html" class="font-bold text-jms-blue hover:text-jms-red transition uppercase text-sm tracking-wide">Programmes</a>
-                    <a href="initiative.html" class="font-bold text-jms-blue hover:text-jms-red transition uppercase text-sm tracking-wide">Initiative</a>
-                    <a href="rejoindre.html" class="font-bold text-jms-blue hover:text-jms-red transition uppercase text-sm tracking-wide">Rejoindre</a>
-                    <a href="reseau.html" class="font-bold text-jms-blue hover:text-jms-red transition uppercase text-sm tracking-wide">Réseau</a>
-                    <a href="bibliotheque.html" class="font-bold text-jms-blue hover:text-jms-red transition uppercase text-sm tracking-wide">Bibliothèque</a>
-                    
-                    <!-- Bouton Menu Mobile (visible uniquement mobile, simulé ici pour l'instant caché en desktop) -->
-                    <button class="md:hidden text-2xl text-jms-blue">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </nav>
+                <!-- Bouton Menu Burger (Remplace les liens) -->
+                <button id="menuToggle" class="flex items-center gap-3 border-2 border-jms-blue text-jms-blue px-6 py-2 rounded-full font-bold hover:bg-jms-blue hover:text-white transition group">
+                    <span class="uppercase tracking-widest text-sm">Menu</span>
+                    <div class="flex flex-col gap-1.5 group-hover:gap-2 transition-all">
+                        <span class="w-6 h-0.5 bg-current transition-all"></span>
+                        <span class="w-6 h-0.5 bg-current transition-all"></span>
+                        <span class="w-6 h-0.5 bg-current transition-all"></span>
+                    </div>
+                </button>
             </div>
         </div>
     </header>
+
+    <!-- Menu Latéral (Sidebar) -->
+    <div id="mobileMenu" class="fixed inset-0 z-[60] pointer-events-none">
+        <!-- Overlay sombre -->
+        <div id="menuOverlay" class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300"></div>
+        
+        <!-- Panneau latéral -->
+        <div id="menuPanel" class="absolute top-0 right-0 w-80 h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col p-8 pointer-events-auto">
+            <div class="flex justify-between items-center mb-12">
+                <span class="text-2xl font-bold text-jms-blue">Navigation</span>
+                <button id="menuClose" class="text-jms-blue hover:text-jms-red transition text-3xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <nav class="flex flex-col gap-6 text-lg font-bold text-jms-blue">
+                <a href="index.html" class="hover:text-jms-red transition border-b border-gray-100 pb-2">Accueil</a>
+                <a href="menu.html" class="hover:text-jms-red transition border-b border-gray-100 pb-2">Nouvelles</a>
+                <a href="programmes.html" class="hover:text-jms-red transition border-b border-gray-100 pb-2">Programmes</a>
+                <a href="initiative.html" class="hover:text-jms-red transition border-b border-gray-100 pb-2">Initiative</a>
+                <a href="rejoindre.html" class="hover:text-jms-red transition border-b border-gray-100 pb-2">Rejoindre</a>
+                <a href="reseau.html" class="hover:text-jms-red transition border-b border-gray-100 pb-2">Réseau</a>
+                <a href="bibliotheque.html" class="hover:text-jms-red transition border-b border-gray-100 pb-2">Bibliothèque</a>
+            </nav>
+            
+            <div class="mt-auto pt-8 border-t border-gray-100">
+                <p class="text-sm text-gray-500 mb-4">Suivez-nous</p>
+                <div class="flex gap-4 text-jms-blue text-xl">
+                    <a href="#" class="hover:text-jms-red"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-jms-red"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-jms-red"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Script Gestion Menu Burger
+        const menuToggle = document.getElementById('menuToggle');
+        const menuClose = document.getElementById('menuClose');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuPanel = document.getElementById('menuPanel');
+        const body = document.body;
+
+        function openMenu() {
+            mobileMenu.classList.remove('pointer-events-none');
+            menuOverlay.classList.remove('opacity-0');
+            menuPanel.classList.remove('translate-x-full');
+            body.style.overflow = 'hidden'; // Empêche le scroll
+        }
+
+        function closeMenu() {
+            menuOverlay.classList.add('opacity-0');
+            menuPanel.classList.add('translate-x-full');
+            setTimeout(() => {
+                mobileMenu.classList.add('pointer-events-none');
+                body.style.overflow = '';
+            }, 300);
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        menuClose.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+    </script>
     
     <!-- Contenu Principal -->
     <main class="flex-grow">
