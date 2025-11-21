@@ -173,18 +173,25 @@
     <!-- Contenu Principal -->
     <main class="flex-grow">
         <div class="container mx-auto px-6 py-8">
-    <a href="bibliotheque.html" class="inline-flex items-center gap-2 text-jms-blue hover:text-jms-red mb-6 animate-slide-in-left"><i class="fas fa-arrow-left"></i> Retour</a>
+    <a href="bibliotheque.html" class="inline-flex items-center gap-2 text-jms-blue hover:text-jms-red mb-6 animate-slide-in-left">
+        <i class="fas fa-arrow-left"></i> Retour à la bibliothèque
+    </a>
+    
     <div class="bg-white rounded-xl shadow-2xl p-4 md:p-8 max-w-5xl mx-auto animate-fade-in-up delay-200">
         <div class="flex justify-between items-center mb-6">
             <h1 class="text-2xl font-bold text-jms-blue">Éducation Citoyenne</h1>
             <div class="flex gap-2">
-                <button id="prev" class="bg-jms-blue text-white px-4 py-2 rounded hover:bg-jms-red"><i class="fas fa-chevron-left"></i></button>
-                <span id="page_num" class="bg-gray-100 px-4 py-2 rounded font-mono">1</span> / <span id="page_count" class="bg-gray-100 px-4 py-2 rounded font-mono">--</span>
-                <button id="next" class="bg-jms-blue text-white px-4 py-2 rounded hover:bg-jms-red"><i class="fas fa-chevron-right"></i></button>
+                <button id="prev" class="bg-jms-blue text-white px-4 py-2 rounded hover:bg-jms-red transition shadow-md z-50"><i class="fas fa-chevron-left"></i></button>
+                <span id="page_num" class="bg-gray-100 px-4 py-2 rounded font-mono flex items-center">1</span> / <span id="page_count" class="bg-gray-100 px-4 py-2 rounded font-mono flex items-center">--</span>
+                <button id="next" class="bg-jms-blue text-white px-4 py-2 rounded hover:bg-jms-red transition shadow-md z-50"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
-        <div class="relative bg-gray-100 rounded overflow-hidden aspect-[3/4] md:aspect-[16/9] flex items-center justify-center animate-fade-in-up delay-300">
-            <canvas id="the-canvas" class="shadow-xl max-h-full"></canvas>
+        
+        <!-- Conteneur avec Perspective pour l'effet 3D -->
+        <div id="book-stage" class="relative bg-gray-100 rounded overflow-hidden aspect-[3/4] md:aspect-[16/9] flex items-center justify-center book-perspective">
+            <div id="page-wrapper" class="relative w-full h-full flex items-center justify-center transform-style-3d">
+                <canvas id="the-canvas" class="shadow-xl max-h-full relative z-10"></canvas>
+            </div>
         </div>
     </div>
 </div>
@@ -222,30 +229,149 @@
     </footer>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<style>
+    /* Styles pour l'animation 3D de feuilletage */
+    .book-perspective {
+        perspective: 1500px; /* Profondeur de la 3D */
+        overflow: hidden;
+    }
+    .transform-style-3d {
+        transform-style: preserve-3d;
+    }
+    
+    /* La "feuille" qui tourne */
+    .page-clone {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Centrage exact comme le canvas */
+        max-height: 100%;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        backface-visibility: hidden; /* On ne voit pas l'arrière (optionnel, ici on veut voir l'image partir) */
+        z-index: 20;
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in; /* Durée 0.5s demandée */
+    }
+
+    /* Animation : Tourne vers la gauche (Page Suivante) */
+    .page-turning-left {
+        transform-origin: left center;
+        transform: translate(-50%, -50%) rotateY(-120deg) !important;
+        opacity: 0;
+    }
+
+    /* Animation : Tourne vers la droite (Page Précédente) */
+    .page-turning-right {
+        transform-origin: right center;
+        transform: translate(-50%, -50%) rotateY(120deg) !important;
+        opacity: 0;
+    }
+</style>
+
 <script>
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+    
     var url = '';
-    var pdfDoc = null, pageNum = 1, pageRendering = false, pageNumPending = null, scale = 1.5, canvas = document.getElementById('the-canvas'), ctx = canvas.getContext('2d');
+    var pdfDoc = null,
+        pageNum = 1,
+        pageRendering = false,
+        pageNumPending = null,
+        scale = 1.5,
+        canvas = document.getElementById('the-canvas'),
+        ctx = canvas.getContext('2d'),
+        bookStage = document.getElementById('book-stage'),
+        pageWrapper = document.getElementById('page-wrapper');
+
     function renderPage(num) {
         pageRendering = true;
         pdfDoc.getPage(num).then(function(page) {
             var viewport = page.getViewport({scale: scale});
             canvas.height = viewport.height;
             canvas.width = viewport.width;
-            var renderContext = { canvasContext: ctx, viewport: viewport };
+
+            var renderContext = {
+                canvasContext: ctx,
+                viewport: viewport
+            };
             var renderTask = page.render(renderContext);
+
             renderTask.promise.then(function() {
                 pageRendering = false;
-                if (pageNumPending !== null) { renderPage(pageNumPending); pageNumPending = null; }
+                if (pageNumPending !== null) {
+                    renderPage(pageNumPending);
+                    pageNumPending = null;
+                }
             });
         });
         document.getElementById('page_num').textContent = num;
     }
-    function queueRenderPage(num) { if (pageRendering) { pageNumPending = num; } else { renderPage(num); } }
-    function onPrevPage() { if (pageNum <= 1) return; pageNum--; queueRenderPage(pageNum); }
+
+    function queueRenderPage(num) {
+        if (pageRendering) {
+            pageNumPending = num;
+        } else {
+            renderPage(num);
+        }
+    }
+
+    // Fonction d'animation de feuilletage
+    function animateTurn(direction) {
+        // 1. Créer une copie de la page actuelle (Snapshot)
+        var clone = document.createElement('img');
+        clone.src = canvas.toDataURL();
+        clone.className = 'page-clone';
+        
+        // Ajuster la taille du clone pour qu'il matche exactement le canvas
+        clone.style.width = canvas.style.width || canvas.width + 'px';
+        clone.style.height = canvas.style.height || canvas.height + 'px';
+        
+        pageWrapper.appendChild(clone);
+
+        // 2. Forcer le reflow pour que la transition CSS soit prise en compte
+        void clone.offsetWidth; 
+
+        // 3. Appliquer la classe d'animation
+        if (direction === 'next') {
+            clone.style.transformOrigin = 'center left'; // Point de pivot à gauche
+            // Petit délai pour laisser le temps au navigateur de "voir" l'image avant de la tourner
+            requestAnimationFrame(() => {
+                clone.classList.add('page-turning-left');
+            });
+        } else {
+            clone.style.transformOrigin = 'center right'; // Point de pivot à droite
+            requestAnimationFrame(() => {
+                clone.classList.add('page-turning-right');
+            });
+        }
+
+        // 4. Supprimer le clone après l'animation (0.5s)
+        setTimeout(() => {
+            if(clone.parentNode) clone.parentNode.removeChild(clone);
+        }, 500);
+    }
+
+    function onPrevPage() {
+        if (pageNum <= 1) return;
+        
+        // Lancer l'animation AVANT de changer la page (on voit l'ancienne partir)
+        animateTurn('prev');
+        
+        pageNum--;
+        queueRenderPage(pageNum);
+    }
+    
+    function onNextPage() {
+        if (pageNum >= pdfDoc.numPages) return;
+        
+        // Lancer l'animation AVANT de changer la page
+        animateTurn('next');
+        
+        pageNum++;
+        queueRenderPage(pageNum);
+    }
+
     document.getElementById('prev').addEventListener('click', onPrevPage);
-    function onNextPage() { if (pageNum >= pdfDoc.numPages) return; pageNum++; queueRenderPage(pageNum); }
     document.getElementById('next').addEventListener('click', onNextPage);
+
     pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
         pdfDoc = pdfDoc_;
         document.getElementById('page_count').textContent = pdfDoc.numPages;
