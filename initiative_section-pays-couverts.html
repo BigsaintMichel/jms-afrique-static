@@ -4,19 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pays couverts - JMS Afrique</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'jms-blue': '#0D2A4F',
+                        'jms-red': '#dc2626',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body class="bg-gray-50">
+    <header class="bg-jms-blue text-white py-4 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3 hover:opacity-90 transition">
+                    <img src="assets/images/logo.png" alt="JMS Logo" class="h-12">
+                    <span class="text-xl font-bold">JMS Afrique</span>
+                </a>
+                <nav class="hidden md:flex gap-6">
+                    <a href="menu.html" class="hover:text-jms-red transition font-semibold">Nouvelles</a>
+                    <a href="programmes.html" class="hover:text-jms-red transition font-semibold">Programmes</a>
+                    <a href="initiative.html" class="hover:text-jms-red transition font-semibold">Initiative</a>
+                    <a href="rejoindre.html" class="hover:text-jms-red transition font-semibold">Rejoindre</a>
+                    <a href="reseau.html" class="hover:text-jms-red transition font-semibold">Réseau</a>
+                    <a href="bibliotheque.html" class="hover:text-jms-red transition font-semibold">Bibliothèque</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
     <div class="container mx-auto px-6 py-12">
-        <a href="initiative.html" class="inline-flex items-center gap-2 text-jms-blue hover:text-jms-red mb-6">
-            <i class="fas fa-arrow-left"></i> Retour
-        </a>
+    <a href="initiative.html" class="inline-flex items-center gap-2 text-jms-blue hover:text-jms-red mb-6 font-semibold">
+        <i class="fas fa-arrow-left"></i> Retour
+    </a>
+    
+    <div class="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto">
         <h1 class="text-4xl font-bold text-jms-blue mb-6">Pays couverts</h1>
-        <div class="prose max-w-none">
+        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
             <p>JMS Afrique intervient actuellement en Côte d'Ivoire avec des ambitions d'expansion dans toute l'Afrique de l'Ouest. Notre réseau s'étend progressivement...</p>
         </div>
     </div>
+</div>
+    
+    <footer class="bg-jms-blue text-white py-8 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center gap-6 mb-4">
+                <a href="https://www.facebook.com/share/14LE77YSZtU/" target="_blank" class="hover:text-jms-red transition">
+                    <i class="fab fa-facebook-f text-2xl"></i>
+                </a>
+                <a href="https://www.instagram.com/jms_afrique" target="_blank" class="hover:text-jms-red transition">
+                    <i class="fab fa-instagram text-2xl"></i>
+                </a>
+                <a href="https://www.tiktok.com/@jms_afrique" target="_blank" class="hover:text-jms-red transition">
+                    <i class="fab fa-tiktok text-2xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/jeunes-m%C3%A9dias-soci%C3%A9t%C3%A9/" target="_blank" class="hover:text-jms-red transition">
+                    <i class="fab fa-linkedin-in text-2xl"></i>
+                </a>
+            </div>
+            <p>&copy; 2025 JMS Afrique. Tous droits réservés.</p>
+            <p class="text-sm mt-2">jeunesmediasetsociete@gmail.com</p>
+        </div>
+    </footer>
 </body>
 </html>
