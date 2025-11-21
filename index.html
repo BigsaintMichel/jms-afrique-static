@@ -71,8 +71,10 @@
             
             /* Ajuster la taille des drapeaux sur mobile */
             header img[alt="Drapeaux"] {
-                height: 3.8rem !important; /* Augmenté pour meilleure visibilité */
-                transform-origin: right center;
+                height: auto !important; /* Hauteur auto pour garder le ratio */
+                width: 45vw !important; /* Prend 45% de la largeur de l'écran */
+                max-width: 220px !important; /* Limite pour ne pas être trop énorme */
+                min-width: 140px !important; /* Minimum pour être sûr qu'on les voit bien */
             }
             
             /* Ajuster la taille du logo sur mobile */
