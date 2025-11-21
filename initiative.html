@@ -48,41 +48,128 @@
     
     <!-- Contenu Principal -->
     <main class="flex-grow">
-        <div class="container mx-auto px-6 py-12">
-    <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold text-jms-blue mb-4">L'Initiative JMS</h1>
-        <p class="text-gray-600 text-lg max-w-3xl mx-auto">Découvrez notre initiative citoyenne.</p>
+        <style>
+/* Animation pillFill si pas déjà définie */
+@keyframes pillFill {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(0); }
+}
+.pill-appear {
+    position: relative;
+    overflow: hidden;
+}
+.pill-appear span.bg {
+    position: absolute;
+    inset: 0;
+    background-color: #dc2626; /* jms-red */
+    transform: translateY(100%);
+    transition: transform 0.5s ease-out;
+    z-index: 0;
+}
+.pill-appear:hover span.bg {
+    transform: translateY(0);
+}
+.pill-appear span.text {
+    position: relative;
+    z-index: 10;
+    transition: color 0.3s;
+}
+.pill-appear:hover span.text {
+    color: white;
+}
+</style>
+
+<div class="container mx-auto px-6 py-12">
+    <div class="text-center mb-16">
+        <!-- Titre Rouge style Maquette -->
+        <div class="inline-block bg-jms-red rounded-full px-8 py-3 mb-6 transform hover:scale-105 transition duration-300 shadow-lg">
+             <span class="text-3xl md:text-4xl font-bold text-white flex items-center gap-3">
+                <i class="fas fa-lightbulb"></i> L'Initiative JMS
+            </span>
+        </div>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">Découvrez notre initiative citoyenne pour une jeunesse africaine informée, formée et engagée.</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">        <a href="initiative_section-en-bref.html" class="block bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition border border-gray-100 hover:border-jms-blue group">
-            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-jms-blue transition">
-                <i class="fas fa-info-circle text-3xl text-jms-blue group-hover:text-white transition"></i>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">        <a href="initiative_section-en-bref.html" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full border border-gray-100">
+            <!-- Header Carte (Bleu) -->
+            <div class="bg-jms-blue h-48 flex items-center justify-center relative overflow-hidden group-hover:bg-blue-900 transition duration-500">
+                <!-- Cercle décoratif -->
+                <div class="absolute w-24 h-24 bg-white opacity-10 rounded-full blur-lg transform scale-0 group-hover:scale-150 transition duration-700"></div>
+                <i class="fas fa-info-circle text-6xl text-white opacity-90 transform group-hover:scale-110 transition duration-500 drop-shadow-md"></i>
             </div>
-            <h3 class="text-xl font-bold text-jms-blue mb-2">En bref</h3>
-            <span class="text-jms-red text-sm font-semibold">En savoir plus <i class="fas fa-arrow-right ml-1"></i></span>
-        </a>        <a href="initiative_section-mission.html" class="block bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition border border-gray-100 hover:border-jms-blue group">
-            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-jms-blue transition">
-                <i class="fas fa-bullseye text-3xl text-jms-blue group-hover:text-white transition"></i>
+            
+            <!-- Contenu Carte -->
+            <div class="p-8 flex-grow flex flex-col">
+                <h3 class="text-2xl font-bold text-jms-blue mb-4 group-hover:text-jms-red transition">En bref</h3>
+                <p class="text-gray-600 mb-6 flex-grow leading-relaxed text-sm line-clamp-3">JMS Afrique (Jeunes Médias et Société) est une initiative citoyenne qui vise à renforcer l'engagement des jeunes...</p>
+                <span class="text-jms-blue font-bold inline-flex items-center mt-auto group-hover:translate-x-2 transition duration-300">
+                    Découvrir <i class="fas fa-arrow-right ml-2"></i>
+                </span>
             </div>
-            <h3 class="text-xl font-bold text-jms-blue mb-2">La mission</h3>
-            <span class="text-jms-red text-sm font-semibold">En savoir plus <i class="fas fa-arrow-right ml-1"></i></span>
-        </a>        <a href="initiative_section-pays-couverts.html" class="block bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition border border-gray-100 hover:border-jms-blue group">
-            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-jms-blue transition">
-                <i class="fas fa-globe-africa text-3xl text-jms-blue group-hover:text-white transition"></i>
+        </a>        <a href="initiative_section-mission.html" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full border border-gray-100">
+            <!-- Header Carte (Bleu) -->
+            <div class="bg-jms-blue h-48 flex items-center justify-center relative overflow-hidden group-hover:bg-blue-900 transition duration-500">
+                <!-- Cercle décoratif -->
+                <div class="absolute w-24 h-24 bg-white opacity-10 rounded-full blur-lg transform scale-0 group-hover:scale-150 transition duration-700"></div>
+                <i class="fas fa-bullseye text-6xl text-white opacity-90 transform group-hover:scale-110 transition duration-500 drop-shadow-md"></i>
             </div>
-            <h3 class="text-xl font-bold text-jms-blue mb-2">Pays couverts</h3>
-            <span class="text-jms-red text-sm font-semibold">En savoir plus <i class="fas fa-arrow-right ml-1"></i></span>
-        </a>        <a href="initiative_section-equipe.html" class="block bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition border border-gray-100 hover:border-jms-blue group">
-            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-jms-blue transition">
-                <i class="fas fa-users text-3xl text-jms-blue group-hover:text-white transition"></i>
+            
+            <!-- Contenu Carte -->
+            <div class="p-8 flex-grow flex flex-col">
+                <h3 class="text-2xl font-bold text-jms-blue mb-4 group-hover:text-jms-red transition">La mission</h3>
+                <p class="text-gray-600 mb-6 flex-grow leading-relaxed text-sm line-clamp-3">Notre mission est de promouvoir la citoyenneté active chez les jeunes africains en leur fournissant les outils...</p>
+                <span class="text-jms-blue font-bold inline-flex items-center mt-auto group-hover:translate-x-2 transition duration-300">
+                    Découvrir <i class="fas fa-arrow-right ml-2"></i>
+                </span>
             </div>
-            <h3 class="text-xl font-bold text-jms-blue mb-2">L'équipe</h3>
-            <span class="text-jms-red text-sm font-semibold">En savoir plus <i class="fas fa-arrow-right ml-1"></i></span>
-        </a>        <a href="initiative_section-points-focaux.html" class="block bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition border border-gray-100 hover:border-jms-blue group">
-            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-jms-blue transition">
-                <i class="fas fa-map-marker-alt text-3xl text-jms-blue group-hover:text-white transition"></i>
+        </a>        <a href="initiative_section-pays-couverts.html" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full border border-gray-100">
+            <!-- Header Carte (Bleu) -->
+            <div class="bg-jms-blue h-48 flex items-center justify-center relative overflow-hidden group-hover:bg-blue-900 transition duration-500">
+                <!-- Cercle décoratif -->
+                <div class="absolute w-24 h-24 bg-white opacity-10 rounded-full blur-lg transform scale-0 group-hover:scale-150 transition duration-700"></div>
+                <i class="fas fa-globe-africa text-6xl text-white opacity-90 transform group-hover:scale-110 transition duration-500 drop-shadow-md"></i>
             </div>
-            <h3 class="text-xl font-bold text-jms-blue mb-2">Les points focaux</h3>
-            <span class="text-jms-red text-sm font-semibold">En savoir plus <i class="fas fa-arrow-right ml-1"></i></span>
+            
+            <!-- Contenu Carte -->
+            <div class="p-8 flex-grow flex flex-col">
+                <h3 class="text-2xl font-bold text-jms-blue mb-4 group-hover:text-jms-red transition">Pays couverts</h3>
+                <p class="text-gray-600 mb-6 flex-grow leading-relaxed text-sm line-clamp-3">JMS Afrique intervient actuellement en Côte d'Ivoire avec des ambitions d'expansion dans toute l'Afrique...</p>
+                <span class="text-jms-blue font-bold inline-flex items-center mt-auto group-hover:translate-x-2 transition duration-300">
+                    Découvrir <i class="fas fa-arrow-right ml-2"></i>
+                </span>
+            </div>
+        </a>        <a href="initiative_section-equipe.html" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full border border-gray-100">
+            <!-- Header Carte (Bleu) -->
+            <div class="bg-jms-blue h-48 flex items-center justify-center relative overflow-hidden group-hover:bg-blue-900 transition duration-500">
+                <!-- Cercle décoratif -->
+                <div class="absolute w-24 h-24 bg-white opacity-10 rounded-full blur-lg transform scale-0 group-hover:scale-150 transition duration-700"></div>
+                <i class="fas fa-users text-6xl text-white opacity-90 transform group-hover:scale-110 transition duration-500 drop-shadow-md"></i>
+            </div>
+            
+            <!-- Contenu Carte -->
+            <div class="p-8 flex-grow flex flex-col">
+                <h3 class="text-2xl font-bold text-jms-blue mb-4 group-hover:text-jms-red transition">L'équipe</h3>
+                <p class="text-gray-600 mb-6 flex-grow leading-relaxed text-sm line-clamp-3">Une équipe dynamique et passionnée, dévouée à la cause de la jeunesse et du développement citoyen.</p>
+                <span class="text-jms-blue font-bold inline-flex items-center mt-auto group-hover:translate-x-2 transition duration-300">
+                    Découvrir <i class="fas fa-arrow-right ml-2"></i>
+                </span>
+            </div>
+        </a>        <a href="initiative_section-points-focaux.html" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full border border-gray-100">
+            <!-- Header Carte (Bleu) -->
+            <div class="bg-jms-blue h-48 flex items-center justify-center relative overflow-hidden group-hover:bg-blue-900 transition duration-500">
+                <!-- Cercle décoratif -->
+                <div class="absolute w-24 h-24 bg-white opacity-10 rounded-full blur-lg transform scale-0 group-hover:scale-150 transition duration-700"></div>
+                <i class="fas fa-map-marker-alt text-6xl text-white opacity-90 transform group-hover:scale-110 transition duration-500 drop-shadow-md"></i>
+            </div>
+            
+            <!-- Contenu Carte -->
+            <div class="p-8 flex-grow flex flex-col">
+                <h3 class="text-2xl font-bold text-jms-blue mb-4 group-hover:text-jms-red transition">Les points focaux</h3>
+                <p class="text-gray-600 mb-6 flex-grow leading-relaxed text-sm line-clamp-3">Nos représentants locaux qui coordonnent les activités et assurent le lien avec les communautés sur le terrain.</p>
+                <span class="text-jms-blue font-bold inline-flex items-center mt-auto group-hover:translate-x-2 transition duration-300">
+                    Découvrir <i class="fas fa-arrow-right ml-2"></i>
+                </span>
+            </div>
         </a></div></div>
     </main>
     
