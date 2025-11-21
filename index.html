@@ -66,20 +66,17 @@
             /* Repositionner les drapeaux pour remonter */
             header .flex {
                 justify-content: space-between;
-                gap: 0.5rem;
+                gap: 0;
             }
             
-            /* Agrandir la bande des drapeaux sur mobile */
+            /* Ajuster la taille des drapeaux sur mobile */
             header img[alt="Drapeaux"] {
-                height: 5rem !important;
-                width: auto !important;
-                max-width: 45vw !important;
+                height: 3rem !important;
             }
             
-            /* Réduire le logo sur mobile pour laisser place aux drapeaux */
+            /* Ajuster la taille du logo sur mobile */
             header img[alt="Logo JMS"] {
-                height: 10rem !important;
-                max-width: 50vw !important;
+                height: 12rem !important;
             }
         }
 
@@ -192,9 +189,20 @@
                     </a>
                 </div>
 
-                <!-- Agenda défilant désactivé -->
-                <div class="flex-1 mx-2 md:mx-8">
-                    <!-- Texte défilant supprimé -->
+                <!-- Agenda défilant au centre -->
+                <div class="flex-1 mx-2 md:mx-8 marquee-wrapper">
+                    <div class="block text-blue-900">
+                        <span class="marquee font-semibold text-red-600 text-2xl md:text-3xl uppercase">
+                            🌍 Voici ce qu&#039;il faut savoir en Afrique de l&#039;Ouest francophone ce soir 
+
+🇧🇫 Le Capitaine Ibrahim Traoré, a lancé aujourd&#039;hui la 20e semaine du numérique au Burkina Faso, dédiée à l&#039;IA. Le Ghana est l&#039;un des pays d&#039;honneur invités.
+
+ 🇬🇳 L&#039;office guinéen de la Publicité annonce l&#039;interdiction formelle de toute publicité à proximité ou à l&#039;intérieur des lieux de prières (mosquée/église).
+
+🇲🇱  Le Ministère de la justice du Mali, annonce l&#039;oucerture du concours pour recruter 200 agents de surveillance pénitentiaires et d’éducation surveillée.
+
+🇹🇬 Faure Gnassingbé, &quot;Président du Conseil des Ministres&quot; au Togo, est attendu à Moscou, par le Président Vladimir Poutine de Russie, pour une visite officielle.                        </span>
+                    </div>
                 </div>
 
                 <!-- Drapeaux à droite -->
@@ -275,7 +283,7 @@
             // Rendre toute la page principale cliquable vers la seconde page,
             // tout en laissant les liens de réseaux sociaux fonctionner normalement.
             landingRoot.addEventListener('click', function () {
-                window.location.href = 'menu.html';
+                window.location.href = "menu.html";
             });
 
             const noRedirectLinks = document.querySelectorAll('.no-redirect');
