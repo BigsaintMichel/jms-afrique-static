@@ -119,9 +119,9 @@
     <!-- Bandeau Flash Infos DÉFILANT (Ticker) -->
     <div class="bg-red-600 text-white py-2 overflow-hidden relative z-40 border-b-4 border-jms-blue">
         <div class="container mx-auto flex items-center">
-            <div class="bg-red-700 px-3 py-1 font-bold text-xs uppercase tracking-wider mr-4 z-10 shadow-lg">Flash Infos</div>
+            <div class="bg-red-700 px-3 py-1 font-bold text-xs uppercase tracking-wider mr-4 z-10 shadow-lg whitespace-nowrap">Flash Infos</div>
             <div class="flex-1 overflow-hidden relative h-6">
-                <div class="animate-marquee font-medium text-sm flex items-center h-full">
+                <div class="animate-marquee font-medium text-sm flex items-center h-full whitespace-nowrap">
                     <span class="mr-12">🌍 Voici ce qu'il faut savoir en Afrique de l'Ouest francophone ce soir.</span>
                     <span class="mr-12">🇧🇫 Le Capitaine Ibrahim Traoré a lancé la 20e semaine du numérique au Burkina Faso.</span>
                     <span class="mr-12">📅 PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13.</span>
@@ -134,12 +134,10 @@
     <!-- Menu Overlay Plein Écran (Style Boutons Centrés) -->
     <div id="mobileMenu" class="fixed inset-0 z-[60] bg-white/98 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500">
         
-        <!-- Bouton Fermer (Absolu en haut à droite) -->
-        <!-- Le bouton Menu du header reste visible grâce au z-index, on peut cliquer dessus pour fermer, 
-             ou ajouter un bouton croix ici si nécessaire. Le script gère le toggle. -->
+        <!-- La croix de fermeture est gérée par le bouton Menu qui change d'état -->
         
-        <nav class="flex flex-col gap-6 w-full max-w-md px-6 text-center">
-            <p class="text-jms-blue uppercase tracking-widest text-sm mb-4 border-b border-gray-200 pb-4">Navigation</p>
+        <nav class="flex flex-col gap-4 w-full max-w-md px-6 text-center">
+            <p class="text-jms-blue uppercase tracking-widest text-sm mb-6 border-b border-gray-200 pb-4">Navigation</p>
             
             <a href="index.html" class="block border-2 border-jms-blue rounded-full py-3 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:scale-105">
                 Accueil
