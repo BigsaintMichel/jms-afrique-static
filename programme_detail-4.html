@@ -18,11 +18,68 @@
                     colors: {
                         'jms-blue': '#0D2A4F',
                         'jms-red': '#dc2626',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.8s ease-out forwards',
                     }
                 }
             }
         }
     </script>
+    <style>
+        /* Animations Globales */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes pillFill {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(0); }
+        }
+        
+        /* Classes Utilitaires d'Animation */
+        .opacity-0-start { opacity: 0; }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
+        
+        /* Style Pilule Animée */
+        .pill-appear {
+            position: relative;
+            overflow: hidden;
+        }
+        .pill-appear span.bg {
+            position: absolute;
+            inset: 0;
+            background-color: #dc2626; /* jms-red */
+            transform: translateY(100%);
+            transition: transform 0.5s ease-out;
+            z-index: 0;
+        }
+        .pill-appear:hover span.bg {
+            transform: translateY(0);
+        }
+        .pill-appear span.text {
+            position: relative;
+            z-index: 10;
+            transition: color 0.3s;
+        }
+        .pill-appear:hover span.text {
+            color: white;
+        }
+    </style>
     
 </head>
 <body class="bg-gray-50 font-sans flex flex-col min-h-screen">
@@ -68,7 +125,7 @@
         <!-- Contenu Principal -->
         <main class="w-full lg:w-3/4">
             <!-- Titre Page -->
-            <div class="inline-block border-2 border-jms-blue rounded-full px-8 py-3 mb-8 pill-appear cursor-default group">
+            <div class="inline-block border-2 border-jms-blue rounded-full px-8 py-3 mb-6 pill-appear cursor-default group">
                 <span class="bg"></span>
                 <span class="text text-2xl font-bold text-jms-blue flex items-center gap-3 group-hover:text-white">
                     <i class="fas fa-hands-helping"></i> Promotion de la citoyenneté positive

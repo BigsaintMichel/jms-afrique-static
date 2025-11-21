@@ -18,11 +18,68 @@
                     colors: {
                         'jms-blue': '#0D2A4F',
                         'jms-red': '#dc2626',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.8s ease-out forwards',
                     }
                 }
             }
         }
     </script>
+    <style>
+        /* Animations Globales */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes pillFill {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(0); }
+        }
+        
+        /* Classes Utilitaires d'Animation */
+        .opacity-0-start { opacity: 0; }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
+        
+        /* Style Pilule Animée */
+        .pill-appear {
+            position: relative;
+            overflow: hidden;
+        }
+        .pill-appear span.bg {
+            position: absolute;
+            inset: 0;
+            background-color: #dc2626; /* jms-red */
+            transform: translateY(100%);
+            transition: transform 0.5s ease-out;
+            z-index: 0;
+        }
+        .pill-appear:hover span.bg {
+            transform: translateY(0);
+        }
+        .pill-appear span.text {
+            position: relative;
+            z-index: 10;
+            transition: color 0.3s;
+        }
+        .pill-appear:hover span.text {
+            color: white;
+        }
+    </style>
     
 </head>
 <body class="bg-gray-50 font-sans flex flex-col min-h-screen">
@@ -49,21 +106,17 @@
     <!-- Contenu Principal -->
     <main class="flex-grow">
         <div class="container mx-auto px-6 py-8">
-    <a href="bibliotheque.html" class="inline-flex items-center gap-2 text-jms-blue hover:text-jms-red mb-6">
-        <i class="fas fa-arrow-left"></i> Retour à la bibliothèque
-    </a>
-    
-    <div class="bg-white rounded-xl shadow-2xl p-4 md:p-8 max-w-5xl mx-auto">
+    <a href="bibliotheque.html" class="inline-flex items-center gap-2 text-jms-blue hover:text-jms-red mb-6 animate-slide-in-left"><i class="fas fa-arrow-left"></i> Retour</a>
+    <div class="bg-white rounded-xl shadow-2xl p-4 md:p-8 max-w-5xl mx-auto animate-fade-in-up delay-200">
         <div class="flex justify-between items-center mb-6">
             <h1 class="text-2xl font-bold text-jms-blue">Mémo Citoyen</h1>
             <div class="flex gap-2">
-                <button id="prev" class="bg-jms-blue text-white px-4 py-2 rounded hover:bg-jms-red transition"><i class="fas fa-chevron-left"></i></button>
+                <button id="prev" class="bg-jms-blue text-white px-4 py-2 rounded hover:bg-jms-red"><i class="fas fa-chevron-left"></i></button>
                 <span id="page_num" class="bg-gray-100 px-4 py-2 rounded font-mono">1</span> / <span id="page_count" class="bg-gray-100 px-4 py-2 rounded font-mono">--</span>
-                <button id="next" class="bg-jms-blue text-white px-4 py-2 rounded hover:bg-jms-red transition"><i class="fas fa-chevron-right"></i></button>
+                <button id="next" class="bg-jms-blue text-white px-4 py-2 rounded hover:bg-jms-red"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
-        
-        <div class="relative bg-gray-100 rounded overflow-hidden aspect-[3/4] md:aspect-[16/9] flex items-center justify-center">
+        <div class="relative bg-gray-100 rounded overflow-hidden aspect-[3/4] md:aspect-[16/9] flex items-center justify-center animate-fade-in-up delay-300">
             <canvas id="the-canvas" class="shadow-xl max-h-full"></canvas>
         </div>
     </div>
@@ -86,62 +139,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
 <script>
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
-    
     var url = '';
-    var pdfDoc = null,
-        pageNum = 1,
-        pageRendering = false,
-        pageNumPending = null,
-        scale = 1.5,
-        canvas = document.getElementById('the-canvas'),
-        ctx = canvas.getContext('2d');
-
+    var pdfDoc = null, pageNum = 1, pageRendering = false, pageNumPending = null, scale = 1.5, canvas = document.getElementById('the-canvas'), ctx = canvas.getContext('2d');
     function renderPage(num) {
         pageRendering = true;
         pdfDoc.getPage(num).then(function(page) {
             var viewport = page.getViewport({scale: scale});
             canvas.height = viewport.height;
             canvas.width = viewport.width;
-
-            var renderContext = {
-                canvasContext: ctx,
-                viewport: viewport
-            };
+            var renderContext = { canvasContext: ctx, viewport: viewport };
             var renderTask = page.render(renderContext);
-
             renderTask.promise.then(function() {
                 pageRendering = false;
-                if (pageNumPending !== null) {
-                    renderPage(pageNumPending);
-                    pageNumPending = null;
-                }
+                if (pageNumPending !== null) { renderPage(pageNumPending); pageNumPending = null; }
             });
         });
         document.getElementById('page_num').textContent = num;
     }
-
-    function queueRenderPage(num) {
-        if (pageRendering) {
-            pageNumPending = num;
-        } else {
-            renderPage(num);
-        }
-    }
-
-    function onPrevPage() {
-        if (pageNum <= 1) return;
-        pageNum--;
-        queueRenderPage(pageNum);
-    }
+    function queueRenderPage(num) { if (pageRendering) { pageNumPending = num; } else { renderPage(num); } }
+    function onPrevPage() { if (pageNum <= 1) return; pageNum--; queueRenderPage(pageNum); }
     document.getElementById('prev').addEventListener('click', onPrevPage);
-
-    function onNextPage() {
-        if (pageNum >= pdfDoc.numPages) return;
-        pageNum++;
-        queueRenderPage(pageNum);
-    }
+    function onNextPage() { if (pageNum >= pdfDoc.numPages) return; pageNum++; queueRenderPage(pageNum); }
     document.getElementById('next').addEventListener('click', onNextPage);
-
     pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
         pdfDoc = pdfDoc_;
         document.getElementById('page_count').textContent = pdfDoc.numPages;

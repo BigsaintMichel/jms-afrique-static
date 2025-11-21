@@ -18,11 +18,68 @@
                     colors: {
                         'jms-blue': '#0D2A4F',
                         'jms-red': '#dc2626',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.8s ease-out forwards',
                     }
                 }
             }
         }
     </script>
+    <style>
+        /* Animations Globales */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes pillFill {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(0); }
+        }
+        
+        /* Classes Utilitaires d'Animation */
+        .opacity-0-start { opacity: 0; }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
+        
+        /* Style Pilule Animée */
+        .pill-appear {
+            position: relative;
+            overflow: hidden;
+        }
+        .pill-appear span.bg {
+            position: absolute;
+            inset: 0;
+            background-color: #dc2626; /* jms-red */
+            transform: translateY(100%);
+            transition: transform 0.5s ease-out;
+            z-index: 0;
+        }
+        .pill-appear:hover span.bg {
+            transform: translateY(0);
+        }
+        .pill-appear span.text {
+            position: relative;
+            z-index: 10;
+            transition: color 0.3s;
+        }
+        .pill-appear:hover span.text {
+            color: white;
+        }
+    </style>
     
 </head>
 <body class="bg-gray-50 font-sans flex flex-col min-h-screen">
@@ -69,7 +126,7 @@
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">Découvrez nos programmes dédiés à l'information, la formation et la promotion de la citoyenneté active.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">        <a href="programme_detail-1.html" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full border border-gray-100">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">        <a href="programme_detail-1.html" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full border border-gray-100 animate-fade-in-up delay-100">
             <!-- Header Carte (Bleu) -->
             <div class="bg-gradient-to-br from-jms-blue to-blue-900 h-56 flex items-center justify-center relative overflow-hidden">
                 <div class="absolute inset-0 bg-white opacity-5 group-hover:opacity-10 transition"></div>
@@ -90,7 +147,7 @@
                     Découvrir le programme <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition"></i>
                 </span>
             </div>
-        </a>        <a href="programme_detail-2.html" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full border border-gray-100">
+        </a>        <a href="programme_detail-2.html" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full border border-gray-100 animate-fade-in-up delay-100">
             <!-- Header Carte (Bleu) -->
             <div class="bg-gradient-to-br from-jms-blue to-blue-900 h-56 flex items-center justify-center relative overflow-hidden">
                 <div class="absolute inset-0 bg-white opacity-5 group-hover:opacity-10 transition"></div>
@@ -108,7 +165,7 @@
                     Découvrir le programme <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition"></i>
                 </span>
             </div>
-        </a>        <a href="programme_detail-3.html" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full border border-gray-100">
+        </a>        <a href="programme_detail-3.html" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full border border-gray-100 animate-fade-in-up delay-100">
             <!-- Header Carte (Bleu) -->
             <div class="bg-gradient-to-br from-jms-blue to-blue-900 h-56 flex items-center justify-center relative overflow-hidden">
                 <div class="absolute inset-0 bg-white opacity-5 group-hover:opacity-10 transition"></div>
@@ -131,7 +188,7 @@
                     Découvrir le programme <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition"></i>
                 </span>
             </div>
-        </a>        <a href="programme_detail-4.html" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full border border-gray-100">
+        </a>        <a href="programme_detail-4.html" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full border border-gray-100 animate-fade-in-up delay-100">
             <!-- Header Carte (Bleu) -->
             <div class="bg-gradient-to-br from-jms-blue to-blue-900 h-56 flex items-center justify-center relative overflow-hidden">
                 <div class="absolute inset-0 bg-white opacity-5 group-hover:opacity-10 transition"></div>

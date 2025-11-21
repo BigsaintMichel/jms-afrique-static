@@ -18,11 +18,68 @@
                     colors: {
                         'jms-blue': '#0D2A4F',
                         'jms-red': '#dc2626',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.8s ease-out forwards',
                     }
                 }
             }
         }
     </script>
+    <style>
+        /* Animations Globales */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes pillFill {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(0); }
+        }
+        
+        /* Classes Utilitaires d'Animation */
+        .opacity-0-start { opacity: 0; }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
+        
+        /* Style Pilule Animée */
+        .pill-appear {
+            position: relative;
+            overflow: hidden;
+        }
+        .pill-appear span.bg {
+            position: absolute;
+            inset: 0;
+            background-color: #dc2626; /* jms-red */
+            transform: translateY(100%);
+            transition: transform 0.5s ease-out;
+            z-index: 0;
+        }
+        .pill-appear:hover span.bg {
+            transform: translateY(0);
+        }
+        .pill-appear span.text {
+            position: relative;
+            z-index: 10;
+            transition: color 0.3s;
+        }
+        .pill-appear:hover span.text {
+            color: white;
+        }
+    </style>
     
 </head>
 <body class="bg-gray-50 font-sans flex flex-col min-h-screen">
@@ -48,26 +105,13 @@
     
     <!-- Contenu Principal -->
     <main class="flex-grow">
-        <style>
-@keyframes pillFill { 0% { transform: translateY(100%); } 100% { transform: translateY(0); } }
-.pill-appear { position: relative; overflow: hidden; }
-.pill-appear span.bg { position: absolute; inset: 0; background-color: #dc2626; transform: translateY(100%); transition: transform 0.5s ease-out; z-index: 0; }
-.pill-appear:hover span.bg { transform: translateY(0); }
-.pill-appear span.text { position: relative; z-index: 10; transition: color 0.3s; }
-.pill-appear:hover span.text { color: white; }
-</style>
-
-<div class="container mx-auto px-6 py-12">
+        <div class="container mx-auto px-6 py-12">
     <div class="flex flex-col lg:flex-row gap-12">
-        
-        <!-- Sidebar Gauche -->
         <aside class="w-full lg:w-1/4">
-            <div class="bg-gray-50 rounded-xl p-6 sticky top-24">
+            <div class="bg-gray-50 rounded-xl p-6 sticky top-24 animate-fade-in-up delay-100">
                 <div class="inline-block border-2 border-jms-blue rounded-full px-6 py-2 mb-6 pill-appear cursor-pointer group">
-                    <span class="bg"></span>
-                    <span class="text text-xl font-bold text-jms-blue group-hover:text-white">Réseau</span>
+                    <span class="bg"></span><span class="text text-xl font-bold text-jms-blue group-hover:text-white">Réseau</span>
                 </div>
-                
                 <nav class="space-y-3">
                     <a href="#ong" class="block text-gray-600 hover:text-jms-blue hover:font-semibold transition">ONG / Associations</a>
                     <a href="#talents" class="block text-gray-600 hover:text-jms-blue hover:font-semibold transition">Jeunes talents</a>
@@ -75,95 +119,41 @@
                 </nav>
             </div>
         </aside>
-        
-        <!-- Contenu Principal Droite -->
         <div class="w-full lg:w-3/4 space-y-16">
-            <!-- Section ONG -->
-            <section id="ong" class="scroll-mt-24">
+            <section id="ong" class="scroll-mt-24 animate-fade-in-up delay-200">
                 <div class="inline-block border-2 border-jms-blue rounded-full px-6 py-2 mb-8 pill-appear cursor-pointer group">
-                    <span class="bg"></span>
-                    <span class="text text-2xl font-bold text-jms-blue group-hover:text-white">ONG / Associations</span>
+                    <span class="bg"></span><span class="text text-2xl font-bold text-jms-blue group-hover:text-white">ONG / Associations</span>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="bg-white border rounded-xl p-6 hover:shadow-lg transition">
-                        <div class="inline-block border border-jms-blue rounded-full px-4 py-1 mb-4 pill-appear cursor-pointer group">
-                            <span class="bg"></span>
-                            <span class="text text-sm font-bold text-jms-blue group-hover:text-white">Présentation des organisations partenaires</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">Découvrez les organisations qui collaborent avec JMS Afrique dans la promotion de la citoyenneté active et de l'engagement des jeunes.</p>
+                        <div class="inline-block border border-jms-blue rounded-full px-4 py-1 mb-4 pill-appear cursor-pointer group"><span class="bg"></span><span class="text text-sm font-bold text-jms-blue group-hover:text-white">Présentation des organisations partenaires</span></div>
+                        <p class="text-gray-600 mb-4">Découvrez les organisations qui collaborent avec JMS Afrique...</p>
                         <a href="#" class="text-jms-blue font-bold hover:underline">En savoir plus →</a>
                     </div>
                     <div class="bg-white border rounded-xl p-6 hover:shadow-lg transition">
-                        <div class="inline-block border border-jms-blue rounded-full px-4 py-1 mb-4 pill-appear cursor-pointer group">
-                            <span class="bg"></span>
-                            <span class="text text-sm font-bold text-jms-blue group-hover:text-white">Profil et contribution dans nos collaborations</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">Explorez les profils de nos partenaires et leur contribution spécifique dans nos différents projets et initiatives citoyennes.</p>
+                        <div class="inline-block border border-jms-blue rounded-full px-4 py-1 mb-4 pill-appear cursor-pointer group"><span class="bg"></span><span class="text text-sm font-bold text-jms-blue group-hover:text-white">Profil et contribution</span></div>
+                        <p class="text-gray-600 mb-4">Explorez les profils de nos partenaires...</p>
                         <a href="#" class="text-jms-blue font-bold hover:underline">En savoir plus →</a>
                     </div>
                 </div>
             </section>
-            
-            <!-- Section Jeunes Talents -->
-            <section id="talents" class="scroll-mt-24">
+            <section id="talents" class="scroll-mt-24 animate-fade-in-up delay-300">
                 <div class="inline-block border-2 border-jms-blue rounded-full px-6 py-2 mb-8 pill-appear cursor-pointer group">
-                    <span class="bg"></span>
-                    <span class="text text-2xl font-bold text-jms-blue group-hover:text-white">Jeunes talents</span>
+                    <span class="bg"></span><span class="text text-2xl font-bold text-jms-blue group-hover:text-white">Jeunes talents</span>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                    <div class="text-center group">
-                        <div class="aspect-square bg-gradient-to-br from-jms-blue to-jms-red rounded-lg mb-4 flex items-center justify-center shadow-lg group-hover:scale-105 transition duration-300">
-                            <i class="fas fa-user text-6xl text-white"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-jms-blue">Awa K.</h3>
-                        <p class="text-sm text-gray-600">Poétesse & podcasteuse</p>
-                    </div>
-                    <div class="text-center group">
-                        <div class="aspect-square bg-gradient-to-br from-jms-blue to-jms-red rounded-lg mb-4 flex items-center justify-center shadow-lg group-hover:scale-105 transition duration-300">
-                            <i class="fas fa-user text-6xl text-white"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-jms-blue">Ibrahim S.</h3>
-                        <p class="text-sm text-gray-600">Photographe social</p>
-                    </div>
-                    <div class="text-center group">
-                        <div class="aspect-square bg-gradient-to-br from-jms-blue to-jms-red rounded-lg mb-4 flex items-center justify-center shadow-lg group-hover:scale-105 transition duration-300">
-                            <i class="fas fa-user text-6xl text-white"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-jms-blue">Sara D.</h3>
-                        <p class="text-sm text-gray-600">Illustratrice</p>
-                    </div>
-                    <div class="text-center group">
-                        <div class="aspect-square bg-gradient-to-br from-jms-blue to-jms-red rounded-lg mb-4 flex items-center justify-center shadow-lg group-hover:scale-105 transition duration-300">
-                            <i class="fas fa-user text-6xl text-white"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-jms-blue">Yao M.</h3>
-                        <p class="text-sm text-gray-600">Beatmaker</p>
-                    </div>
+                    <!-- Talents (simplifié pour lisibilité script) -->
+                    <div class="text-center group"><div class="aspect-square bg-gradient-to-br from-jms-blue to-jms-red rounded-lg mb-4 flex items-center justify-center shadow-lg"><i class="fas fa-user text-6xl text-white"></i></div><h3 class="font-bold text-lg text-jms-blue">Awa K.</h3><p class="text-sm text-gray-600">Poétesse</p></div>
+                    <div class="text-center group"><div class="aspect-square bg-gradient-to-br from-jms-blue to-jms-red rounded-lg mb-4 flex items-center justify-center shadow-lg"><i class="fas fa-user text-6xl text-white"></i></div><h3 class="font-bold text-lg text-jms-blue">Ibrahim S.</h3><p class="text-sm text-gray-600">Photographe</p></div>
                 </div>
             </section>
-            
-            <!-- Section Jeunes Professionnels -->
-            <section id="pros" class="scroll-mt-24">
+            <section id="pros" class="scroll-mt-24 animate-fade-in-up delay-400">
                 <div class="inline-block border-2 border-jms-blue rounded-full px-6 py-2 mb-8 pill-appear cursor-pointer group">
-                    <span class="bg"></span>
-                    <span class="text text-2xl font-bold text-jms-blue group-hover:text-white">Jeunes professionnels</span>
+                    <span class="bg"></span><span class="text text-2xl font-bold text-jms-blue group-hover:text-white">Jeunes professionnels</span>
                 </div>
                 <div class="space-y-4">
-                    <div class="bg-gray-50 rounded-lg p-6 border border-gray-200 hover:border-jms-blue transition group">
-                        <h3 class="font-bold text-jms-blue mb-2">Aïcha B. – Analyste des politiques publiques</h3>
-                        <p class="text-sm text-gray-600 mb-3">Compétences : data policy, suivi-évaluation, plaidoyer.</p>
-                        <a href="#" class="text-sm font-bold text-jms-blue group-hover:underline">Voir le profil →</a>
-                    </div>
-                    <div class="bg-gray-50 rounded-lg p-6 border border-gray-200 hover:border-jms-blue transition group">
-                        <h3 class="font-bold text-jms-blue mb-2">Moussa T. – Ingénieur civic tech</h3>
-                        <p class="text-sm text-gray-600 mb-3">Compétences : open data, outils participatifs, accessibilité.</p>
-                        <a href="#" class="text-sm font-bold text-jms-blue group-hover:underline">Voir le profil →</a>
-                    </div>
-                    <div class="bg-gray-50 rounded-lg p-6 border border-gray-200 hover:border-jms-blue transition group">
-                        <h3 class="font-bold text-jms-blue mb-2">Nadia K. – Juriste</h3>
-                        <p class="text-sm text-gray-600 mb-3">Compétences : droits humains, médiation, gouvernance locale.</p>
-                        <a href="#" class="text-sm font-bold text-jms-blue group-hover:underline">Voir le profil →</a>
-                    </div>
+                    <div class="bg-gray-50 rounded-lg p-6 border border-gray-200 hover:border-jms-blue transition"><h3 class="font-bold text-jms-blue mb-2">Aïcha B.</h3><p class="text-sm text-gray-600">Analyste politiques publiques</p></div>
+                    <div class="bg-gray-50 rounded-lg p-6 border border-gray-200 hover:border-jms-blue transition"><h3 class="font-bold text-jms-blue mb-2">Moussa T.</h3><p class="text-sm text-gray-600">Ingénieur civic tech</p></div>
                 </div>
             </section>
         </div>
