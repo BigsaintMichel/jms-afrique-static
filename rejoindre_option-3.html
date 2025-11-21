@@ -116,12 +116,17 @@
         </div>
     </header>
 
-    <!-- Bandeau Flash Infos STATIQUE (Géré par JS) -->
-    <div id="flashInfoBanner" class="bg-red-600 text-white py-3 overflow-hidden relative z-40 border-b-4 border-jms-blue shadow-md">
-        <div class="container mx-auto flex items-center justify-center px-4">
-            <div class="font-bold text-base md:text-lg uppercase tracking-wide flex items-center gap-2 text-center">
-                <i class="fas fa-calendar-check"></i>
-                <span>AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13</span>
+    <!-- Bandeau Flash Infos DÉFILANT (Ticker) -->
+    <div id="flashInfoBanner" class="bg-red-600 text-white py-2 overflow-hidden relative z-40 border-b-4 border-jms-blue">
+        <div class="container mx-auto flex items-center">
+            <div class="bg-red-700 px-3 py-1 font-bold text-xs uppercase tracking-wider mr-4 z-10 shadow-lg whitespace-nowrap">Flash Infos</div>
+            <div class="flex-1 overflow-hidden relative h-6">
+                <div class="animate-marquee font-medium text-sm flex items-center h-full whitespace-nowrap">
+                    <span class="mr-12">🌍 Voici ce qu'il faut savoir en Afrique de l'Ouest francophone ce soir.</span>
+                    <span class="mr-12">🇧🇫 Le Capitaine Ibrahim Traoré a lancé la 20e semaine du numérique au Burkina Faso.</span>
+                    <span class="mr-12">📅 PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13.</span>
+                    <span class="mr-12">🚀 Rejoignez nos nouveaux programmes de formation citoyenne !</span>
+                </div>
             </div>
         </div>
     </div>
