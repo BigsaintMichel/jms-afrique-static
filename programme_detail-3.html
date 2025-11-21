@@ -94,6 +94,27 @@
     
 </head>
 <body class="bg-gray-50 font-sans flex flex-col min-h-screen">
+    
+    <!-- Bandeau Flash Infos DÉFILANT (Ticker) - Au-dessus du Header -->
+    <!-- Style : Fond blanc, Texte Rouge, Label Rouge -->
+    <div id="flashInfoBanner" class="bg-white py-2 overflow-hidden relative z-[60] border-b border-gray-200">
+        <div class="container mx-auto flex items-center">
+            <!-- Label Rouge -->
+            <div class="bg-red-600 text-white px-3 py-1 font-bold text-xs uppercase tracking-wider mr-4 z-10 shadow-sm whitespace-nowrap rounded-sm">
+                Flash Infos
+            </div>
+            <!-- Message Défilant en ROUGE -->
+            <div class="flex-1 overflow-hidden relative h-6">
+                <div class="animate-marquee font-bold text-sm text-red-600 flex items-center h-full whitespace-nowrap">
+                    <span class="mr-24"><i class="fas fa-calendar-alt mr-2 text-jms-blue"></i> AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13</span>
+                    <span class="mr-24"><i class="fas fa-calendar-alt mr-2 text-jms-blue"></i> AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13</span>
+                    <span class="mr-24"><i class="fas fa-calendar-alt mr-2 text-jms-blue"></i> AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13</span>
+                    <span class="mr-24"><i class="fas fa-calendar-alt mr-2 text-jms-blue"></i> AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Header Blanc -->
     <header class="bg-white text-jms-blue py-4 shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6">
@@ -115,21 +136,6 @@
             </div>
         </div>
     </header>
-
-    <!-- Bandeau Flash Infos DÉFILANT (Ticker) -->
-    <div id="flashInfoBanner" class="bg-red-600 text-white py-2 overflow-hidden relative z-40 border-b-4 border-jms-blue">
-        <div class="container mx-auto flex items-center">
-            <div class="bg-red-700 px-3 py-1 font-bold text-xs uppercase tracking-wider mr-4 z-10 shadow-lg whitespace-nowrap">Flash Infos</div>
-            <div class="flex-1 overflow-hidden relative h-6">
-                <div class="animate-marquee font-medium text-sm flex items-center h-full whitespace-nowrap">
-                    <span class="mr-24"><i class="fas fa-calendar-alt mr-2"></i> AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13</span>
-                    <span class="mr-24"><i class="fas fa-calendar-alt mr-2"></i> AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13</span>
-                    <span class="mr-24"><i class="fas fa-calendar-alt mr-2"></i> AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13</span>
-                    <span class="mr-24"><i class="fas fa-calendar-alt mr-2"></i> AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13</span>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Menu Overlay Plein Écran (Aligné Gauche + Flou) -->
     <div id="mobileMenu" class="fixed inset-0 z-[60] bg-white/80 backdrop-blur-xl flex flex-col items-start justify-center opacity-0 pointer-events-none transition-opacity duration-500 pl-10 md:pl-24">
