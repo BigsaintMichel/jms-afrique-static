@@ -48,11 +48,27 @@
     
     <!-- Contenu Principal -->
     <main class="flex-grow">
-        <div class="container mx-auto px-6 py-12">
-    <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold text-jms-blue mb-4">Bibliothèque JMS</h1>
-        <p class="text-gray-600 text-lg">Accédez à nos ressources documentaires.</p>
+        <style>
+@keyframes pillFill { 0% { transform: translateY(100%); } 100% { transform: translateY(0); } }
+.pill-appear { position: relative; overflow: hidden; }
+.pill-appear span.bg { position: absolute; inset: 0; background-color: #dc2626; transform: translateY(100%); transition: transform 0.5s ease-out; z-index: 0; }
+.pill-appear:hover span.bg { transform: translateY(0); }
+.pill-appear span.text { position: relative; z-index: 10; transition: color 0.3s; }
+.pill-appear:hover span.text { color: white; }
+</style>
+
+<div class="container mx-auto px-6 py-12">
+    <div class="text-center mb-16">
+        <!-- Titre Pilule -->
+        <div class="inline-block border-2 border-jms-blue rounded-full px-8 py-3 mb-6 pill-appear cursor-pointer group">
+            <span class="bg"></span>
+            <span class="text text-3xl md:text-4xl font-bold text-jms-blue flex items-center gap-3 group-hover:text-white">
+                <i class="fas fa-book-reader"></i> Bibliothèque JMS
+            </span>
+        </div>
+        <p class="text-gray-600 text-lg">Accédez à nos ressources documentaires pour vous informer et vous former.</p>
     </div>
+    
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">        <a href="lire-3.html" class="group block">
             <div class="aspect-[2/3] bg-gray-200 rounded-lg shadow-md overflow-hidden relative mb-4 group-hover:shadow-xl transition transform group-hover:-translate-y-2">
                 <img src="https://via.placeholder.com/400x600/1d4ed8/ffffff?text=Formation" alt="Formation aux Médias" class="w-full h-full object-cover">

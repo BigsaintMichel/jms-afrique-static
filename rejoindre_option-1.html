@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stage - JMS Afrique</title>
+    <title>Stage - JMS Rejoindre</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
@@ -23,8 +23,10 @@
             }
         }
     </script>
+    
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 font-sans flex flex-col min-h-screen">
+    <!-- Header -->
     <header class="bg-jms-blue text-white py-4 shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-6">
             <div class="flex items-center justify-between">
@@ -44,38 +46,82 @@
         </div>
     </header>
     
-    <div class="container mx-auto px-6 py-12">
-    <a href="rejoindre.html" class="inline-flex items-center gap-2 text-jms-blue hover:text-jms-red mb-6 font-semibold">
-        <i class="fas fa-arrow-left"></i> Retour
-    </a>
-    
-    <div class="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto">
-        <h1 class="text-4xl font-bold text-jms-blue mb-6">Stage</h1>
-        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
-            je cherche un dev
-        </div>
+    <!-- Contenu Principal -->
+    <main class="flex-grow">
+        <style>
+@keyframes pillFill { 0% { transform: translateY(100%); } 100% { transform: translateY(0); } }
+.pill-appear { position: relative; overflow: hidden; }
+.pill-appear span.bg { position: absolute; inset: 0; background-color: #dc2626; transform: translateY(100%); transition: transform 0.5s ease-out; z-index: 0; }
+.pill-appear:hover span.bg { transform: translateY(0); }
+.pill-appear span.text { position: relative; z-index: 10; transition: color 0.3s; }
+.pill-appear:hover span.text { color: white; }
+</style>
+
+<div class="container mx-auto px-6 py-12">
+    <div class="flex flex-col lg:flex-row gap-12">
+        <!-- Sidebar Gauche -->
+        <aside class="w-full lg:w-1/4">
+            <div class="bg-white rounded-xl shadow-lg p-6 sticky top-24 border border-gray-100"><a href="rejoindre.html" class="block text-center border border-jms-blue rounded-full py-2 mb-6 text-jms-blue hover:bg-gray-50 transition"><i class="fas fa-arrow-left mr-2"></i> Retour</a><div class="border-2 border-jms-blue rounded-full py-2 px-4 mb-6 text-center font-bold text-jms-blue">Rejoindre</div><nav class="space-y-2"><a href='rejoindre_option-1.html' class='block px-4 py-2 rounded-lg transition font-medium flex items-center gap-3 bg-jms-blue text-white'><i class='fas fa-chevron-right text-xs'></i> Stage</a><a href='rejoindre_option-2.html' class='block px-4 py-2 rounded-lg transition font-medium flex items-center gap-3 text-gray-600 hover:bg-gray-50 hover:text-jms-blue'><i class='fas fa-chevron-right text-xs'></i> Bénévolat</a><a href='rejoindre_option-3.html' class='block px-4 py-2 rounded-lg transition font-medium flex items-center gap-3 text-gray-600 hover:bg-gray-50 hover:text-jms-blue'><i class='fas fa-chevron-right text-xs'></i> Immersion</a><a href='rejoindre_option-4.html' class='block px-4 py-2 rounded-lg transition font-medium flex items-center gap-3 text-gray-600 hover:bg-gray-50 hover:text-jms-blue'><i class='fas fa-chevron-right text-xs'></i> Mission</a></nav></div>
+            
+            <!-- Widget Contact Sidebar -->
+            <div class="bg-blue-50 rounded-xl p-6 mt-8 border border-blue-100 text-center">
+                <i class="fas fa-question-circle text-4xl text-jms-blue mb-4"></i>
+                <h4 class="font-bold text-jms-blue mb-2">Une question ?</h4>
+                <p class="text-sm text-gray-600 mb-4">Notre équipe RH est là pour vous répondre.</p>
+                <a href="mailto:rh@jms-afrique.org" class="text-jms-red font-bold hover:underline">Nous écrire</a>
+            </div>
+        </aside>
+        
+        <!-- Contenu Principal -->
+        <main class="w-full lg:w-3/4">
+            <!-- Titre Page -->
+            <div class="inline-block border-2 border-jms-blue rounded-full px-8 py-3 mb-8 pill-appear cursor-default group">
+                <span class="bg"></span>
+                <span class="text text-2xl font-bold text-jms-blue flex items-center gap-3 group-hover:text-white">
+                    <i class="fas fa-briefcase"></i> Stage
+                </span>
+            </div>
+            
+            <!-- Contenu Texte -->
+            <div class="bg-white border border-gray-200 rounded-xl p-8 mb-8 shadow-sm text-gray-700 leading-relaxed text-lg">
+                <p>je cherche un dev</p>
+                <p class="mt-4">Rejoignez-nous pour vivre une expérience unique au service de la citoyenneté.</p>
+            </div>
+            
+            <!-- Formulaire de candidature (Simulé) -->
+            <div class="bg-gray-50 rounded-xl p-8 border border-gray-200">
+                <h3 class="text-xl font-bold text-jms-blue mb-6"><i class="fas fa-paper-plane mr-2"></i> Postuler maintenant</h3>
+                
+                <div class="bg-white p-6 rounded-lg border border-blue-100 text-center">
+                    <p class="text-gray-600 mb-6">Pour postuler à cette offre, veuillez nous envoyer votre CV et lettre de motivation.</p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="mailto:recrutement@jms-afrique.org?subject=Candidature: Stage" class="bg-jms-blue text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-800 transition shadow-lg">
+                            <i class="fas fa-envelope mr-2"></i> Envoyer par Email
+                        </a>
+                        <a href="#" class="bg-white text-jms-blue border-2 border-jms-blue px-6 py-3 rounded-lg font-bold hover:bg-blue-50 transition">
+                            <i class="fab fa-linkedin mr-2"></i> Via LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 </div>
+    </main>
     
+    <!-- Footer -->
     <footer class="bg-jms-blue text-white py-8 mt-12">
         <div class="container mx-auto px-6 text-center">
             <div class="flex justify-center gap-6 mb-4">
-                <a href="https://www.facebook.com/share/14LE77YSZtU/" target="_blank" class="hover:text-jms-red transition">
-                    <i class="fab fa-facebook-f text-2xl"></i>
-                </a>
-                <a href="https://www.instagram.com/jms_afrique" target="_blank" class="hover:text-jms-red transition">
-                    <i class="fab fa-instagram text-2xl"></i>
-                </a>
-                <a href="https://www.tiktok.com/@jms_afrique" target="_blank" class="hover:text-jms-red transition">
-                    <i class="fab fa-tiktok text-2xl"></i>
-                </a>
-                <a href="https://www.linkedin.com/company/jeunes-m%C3%A9dias-soci%C3%A9t%C3%A9/" target="_blank" class="hover:text-jms-red transition">
-                    <i class="fab fa-linkedin-in text-2xl"></i>
-                </a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-facebook-f text-2xl"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-tiktok text-2xl"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-linkedin-in text-2xl"></i></a>
             </div>
             <p>&copy; 2025 JMS Afrique. Tous droits réservés.</p>
-            <p class="text-sm mt-2">jeunesmediasetsociete@gmail.com</p>
         </div>
     </footer>
+    
+    
 </body>
 </html>
