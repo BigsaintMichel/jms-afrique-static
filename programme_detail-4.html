@@ -47,6 +47,17 @@
             100% { transform: translateY(0); }
         }
         
+        /* Animation Défilement (Ticker) pour Flash Infos */
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 25s linear infinite;
+        }
+        
         /* Classes Utilitaires d'Animation */
         .opacity-0-start { opacity: 0; }
         .delay-100 { animation-delay: 100ms; }
@@ -92,8 +103,8 @@
                     <img src="assets/images/logo.png" alt="JMS Logo" class="h-24 md:h-32">
                 </a>
                 
-                <!-- Bouton Menu Burger (Remplace les liens) -->
-                <button id="menuToggle" class="flex items-center gap-3 border-2 border-jms-blue text-jms-blue px-6 py-2 rounded-full font-bold hover:bg-jms-blue hover:text-white transition group">
+                <!-- Bouton Menu Burger -->
+                <button id="menuToggle" class="flex items-center gap-3 border-2 border-jms-blue text-jms-blue px-6 py-2 rounded-full font-bold hover:bg-jms-blue hover:text-white transition group z-[70]">
                     <span class="uppercase tracking-widest text-sm">Menu</span>
                     <div class="flex flex-col gap-1.5 group-hover:gap-2 transition-all">
                         <span class="w-6 h-0.5 bg-current transition-all"></span>
@@ -105,69 +116,85 @@
         </div>
     </header>
 
-    <!-- Menu Latéral (Sidebar) -->
-    <div id="mobileMenu" class="fixed inset-0 z-[60] pointer-events-none">
-        <!-- Overlay sombre -->
-        <div id="menuOverlay" class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300"></div>
-        
-        <!-- Panneau latéral -->
-        <div id="menuPanel" class="absolute top-0 right-0 w-80 h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col p-8 pointer-events-auto">
-            <div class="flex justify-between items-center mb-12">
-                <span class="text-2xl font-bold text-jms-blue">Navigation</span>
-                <button id="menuClose" class="text-jms-blue hover:text-jms-red transition text-3xl">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            
-            <nav class="flex flex-col gap-6 text-lg font-bold text-jms-blue">
-                <a href="index.html" class="hover:text-jms-red transition border-b border-gray-100 pb-2">Accueil</a>
-                <a href="menu.html" class="hover:text-jms-red transition border-b border-gray-100 pb-2">Nouvelles</a>
-                <a href="programmes.html" class="hover:text-jms-red transition border-b border-gray-100 pb-2">Programmes</a>
-                <a href="initiative.html" class="hover:text-jms-red transition border-b border-gray-100 pb-2">Initiative</a>
-                <a href="rejoindre.html" class="hover:text-jms-red transition border-b border-gray-100 pb-2">Rejoindre</a>
-                <a href="reseau.html" class="hover:text-jms-red transition border-b border-gray-100 pb-2">Réseau</a>
-                <a href="bibliotheque.html" class="hover:text-jms-red transition border-b border-gray-100 pb-2">Bibliothèque</a>
-            </nav>
-            
-            <div class="mt-auto pt-8 border-t border-gray-100">
-                <p class="text-sm text-gray-500 mb-4">Suivez-nous</p>
-                <div class="flex gap-4 text-jms-blue text-xl">
-                    <a href="#" class="hover:text-jms-red"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="hover:text-jms-red"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="hover:text-jms-red"><i class="fab fa-linkedin-in"></i></a>
+    <!-- Bandeau Flash Infos DÉFILANT (Ticker) -->
+    <div class="bg-red-600 text-white py-2 overflow-hidden relative z-40 border-b-4 border-jms-blue">
+        <div class="container mx-auto flex items-center">
+            <div class="bg-red-700 px-3 py-1 font-bold text-xs uppercase tracking-wider mr-4 z-10 shadow-lg">Flash Infos</div>
+            <div class="flex-1 overflow-hidden relative h-6">
+                <div class="animate-marquee font-medium text-sm flex items-center h-full">
+                    <span class="mr-12">🌍 Voici ce qu'il faut savoir en Afrique de l'Ouest francophone ce soir.</span>
+                    <span class="mr-12">🇧🇫 Le Capitaine Ibrahim Traoré a lancé la 20e semaine du numérique au Burkina Faso.</span>
+                    <span class="mr-12">📅 PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13.</span>
+                    <span class="mr-12">🚀 Rejoignez nos nouveaux programmes de formation citoyenne !</span>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Menu Overlay Plein Écran (Style Boutons Centrés) -->
+    <div id="mobileMenu" class="fixed inset-0 z-[60] bg-white/98 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500">
+        
+        <!-- Bouton Fermer (Absolu en haut à droite) -->
+        <!-- Le bouton Menu du header reste visible grâce au z-index, on peut cliquer dessus pour fermer, 
+             ou ajouter un bouton croix ici si nécessaire. Le script gère le toggle. -->
+        
+        <nav class="flex flex-col gap-6 w-full max-w-md px-6 text-center">
+            <p class="text-jms-blue uppercase tracking-widest text-sm mb-4 border-b border-gray-200 pb-4">Navigation</p>
+            
+            <a href="index.html" class="block border-2 border-jms-blue rounded-full py-3 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:scale-105">
+                Accueil
+            </a>
+            <a href="menu.html" class="block border-2 border-jms-blue rounded-full py-3 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:scale-105">
+                Nouvelles
+            </a>
+            <a href="programmes.html" class="block border-2 border-jms-blue rounded-full py-3 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:scale-105">
+                Les Programmes
+            </a>
+            <a href="initiative.html" class="block border-2 border-jms-blue rounded-full py-3 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:scale-105">
+                L'Initiative
+            </a>
+            <a href="rejoindre.html" class="block border-2 border-jms-blue rounded-full py-3 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:scale-105">
+                Rejoindre
+            </a>
+            <a href="reseau.html" class="block border-2 border-jms-blue rounded-full py-3 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:scale-105">
+                Réseau
+            </a>
+            <a href="bibliotheque.html" class="block border-2 border-jms-blue rounded-full py-3 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:scale-105">
+                Bibliothèque
+            </a>
+            
+            <div class="mt-8 flex justify-center gap-6 text-jms-blue text-2xl">
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </nav>
+    </div>
+
     <script>
-        // Script Gestion Menu Burger
+        // Script Gestion Menu Burger (Overlay)
         const menuToggle = document.getElementById('menuToggle');
-        const menuClose = document.getElementById('menuClose');
         const mobileMenu = document.getElementById('mobileMenu');
-        const menuOverlay = document.getElementById('menuOverlay');
-        const menuPanel = document.getElementById('menuPanel');
         const body = document.body;
+        let isMenuOpen = false;
 
-        function openMenu() {
-            mobileMenu.classList.remove('pointer-events-none');
-            menuOverlay.classList.remove('opacity-0');
-            menuPanel.classList.remove('translate-x-full');
-            body.style.overflow = 'hidden'; // Empêche le scroll
-        }
-
-        function closeMenu() {
-            menuOverlay.classList.add('opacity-0');
-            menuPanel.classList.add('translate-x-full');
-            setTimeout(() => {
-                mobileMenu.classList.add('pointer-events-none');
+        menuToggle.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                // Ouvrir
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                menuToggle.innerHTML = '<span class="uppercase tracking-widest text-sm">Fermer</span><i class="fas fa-times text-xl ml-2"></i>';
+                menuToggle.classList.add('bg-jms-blue', 'text-white'); // Inverser couleurs bouton
+                body.style.overflow = 'hidden';
+            } else {
+                // Fermer
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                menuToggle.innerHTML = '<span class="uppercase tracking-widest text-sm">Menu</span><div class="flex flex-col gap-1.5 group-hover:gap-2 transition-all"><span class="w-6 h-0.5 bg-current transition-all"></span><span class="w-6 h-0.5 bg-current transition-all"></span><span class="w-6 h-0.5 bg-current transition-all"></span></div>';
+                menuToggle.classList.remove('bg-jms-blue', 'text-white');
                 body.style.overflow = '';
-            }, 300);
-        }
-
-        menuToggle.addEventListener('click', openMenu);
-        menuClose.addEventListener('click', closeMenu);
-        menuOverlay.addEventListener('click', closeMenu);
+            }
+        });
     </script>
     
     <!-- Contenu Principal -->
