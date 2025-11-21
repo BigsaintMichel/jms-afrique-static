@@ -1,272 +1,104 @@
-
-    <!-- Icône WhatsApp fixe -->
-    <a href="https://wa.me/message/TWROZBT5EFWPK1" aria-label="WhatsApp JMS" class="whatsapp-fixed hover:opacity-90" style="position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%); z-index: 50;">
-        <i class="fab fa-whatsapp text-4xl md:text-5xl text-green-600"></i>
-    </a>
-
-    <main class="container mx-auto px-6 py-12">
-
-        <!-- Titre principal -->
-        <div class="text-center mb-12">
-            <h1 class="group relative inline-block mb-4 overflow-hidden rounded-full border-2 border-jms-blue px-8 py-3 text-3xl md:text-5xl font-bold text-jms-blue pill-appear">
-                <span class="absolute inset-0 translate-y-full bg-jms-red transition-transform duration-500 ease-out group-hover:translate-y-0"></span>
-                <span class="relative z-10 transition-colors duration-300 group-hover:text-white">
-                    <i class="fas fa-lightbulb"></i> L'Initiative JMS
-                </span>
-            </h1>
-            <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-                Découvrez notre initiative citoyenne pour une jeunesse africaine informée, formée et engagée.
-            </p>
-        </div>
-
-        <!-- Grille des sections -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                                            
-                <a href="initiative_section.php?slug=en-bref" 
-                   class="group block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-jms-blue"
-                   style="animation: fadeInUp 0.6s ease-out 0.1s both;">
-                    
-                    <!-- Icône de la section -->
-                    <div class="h-48 bg-gradient-to-br from-jms-blue to-blue-800 flex items-center justify-center">
-                        <i class="fas fa-lightbulb text-8xl text-white opacity-90 group-hover:scale-110 transition-transform duration-500"></i>
-                    </div>
-                    
-                    <!-- Corps de la carte -->
-                    <div class="p-6">
-                        <h2 class="text-2xl font-bold text-jms-blue mb-3 group-hover:text-jms-red transition-colors">
-                            En bref                        </h2>
-                        
-                        <p class="text-gray-600 mb-4 line-clamp-4">
-                            JMS Afrique (Jeunes Médias et Société) est une initiative citoyenne qui vise à renforcer l&#039;engagement des jeunes dans la vie publique à travers l&#039;info...                        </p>
-                        
-                        <!-- Bouton En savoir plus -->
-                        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
-                            <span class="text-jms-blue font-semibold group-hover:text-jms-red transition-colors">
-                                Découvrir
-                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform"></i>
-                            </span>
-                        </div>
-                    </div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Initiative - JMS Afrique</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'jms-blue': '#0D2A4F',
+                        'jms-red': '#dc2626',
+                    }
+                }
+            }
+        }
+    </script>
+    
+</head>
+<body class="bg-gray-50 font-sans flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-jms-blue text-white py-4 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3 hover:opacity-90 transition">
+                    <img src="assets/images/logo.png" alt="JMS Logo" class="h-12">
+                    <span class="text-xl font-bold">JMS Afrique</span>
                 </a>
-                                            
-                <a href="initiative_section.php?slug=mission" 
-                   class="group block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-jms-blue"
-                   style="animation: fadeInUp 0.6s ease-out 0.15s both;">
-                    
-                    <!-- Icône de la section -->
-                    <div class="h-48 bg-gradient-to-br from-jms-blue to-blue-800 flex items-center justify-center">
-                        <i class="fas fa-bullseye text-8xl text-white opacity-90 group-hover:scale-110 transition-transform duration-500"></i>
-                    </div>
-                    
-                    <!-- Corps de la carte -->
-                    <div class="p-6">
-                        <h2 class="text-2xl font-bold text-jms-blue mb-3 group-hover:text-jms-red transition-colors">
-                            La mission                        </h2>
-                        
-                        <p class="text-gray-600 mb-4 line-clamp-4">
-                            Notre mission est de promouvoir la citoyenneté active chez les jeunes africains en leur fournissant les outils, les connaissances et les opportunités ...                        </p>
-                        
-                        <!-- Bouton En savoir plus -->
-                        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
-                            <span class="text-jms-blue font-semibold group-hover:text-jms-red transition-colors">
-                                Découvrir
-                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform"></i>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                                            
-                <a href="initiative_section.php?slug=pays-couverts" 
-                   class="group block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-jms-blue"
-                   style="animation: fadeInUp 0.6s ease-out 0.2s both;">
-                    
-                    <!-- Icône de la section -->
-                    <div class="h-48 bg-gradient-to-br from-jms-blue to-blue-800 flex items-center justify-center">
-                        <i class="fas fa-globe-africa text-8xl text-white opacity-90 group-hover:scale-110 transition-transform duration-500"></i>
-                    </div>
-                    
-                    <!-- Corps de la carte -->
-                    <div class="p-6">
-                        <h2 class="text-2xl font-bold text-jms-blue mb-3 group-hover:text-jms-red transition-colors">
-                            Pays couverts                        </h2>
-                        
-                        <p class="text-gray-600 mb-4 line-clamp-4">
-                            JMS Afrique intervient actuellement en Côte d&#039;Ivoire avec des ambitions d&#039;expansion dans toute l&#039;Afrique de l&#039;Ouest. Notre réseau s&#039;étend progressivem...                        </p>
-                        
-                        <!-- Bouton En savoir plus -->
-                        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
-                            <span class="text-jms-blue font-semibold group-hover:text-jms-red transition-colors">
-                                Découvrir
-                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform"></i>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                                            
-                <a href="initiative_section.php?slug=equipe" 
-                   class="group block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-jms-blue"
-                   style="animation: fadeInUp 0.6s ease-out 0.25s both;">
-                    
-                    <!-- Icône de la section -->
-                    <div class="h-48 bg-gradient-to-br from-jms-blue to-blue-800 flex items-center justify-center">
-                        <i class="fas fa-users text-8xl text-white opacity-90 group-hover:scale-110 transition-transform duration-500"></i>
-                    </div>
-                    
-                    <!-- Corps de la carte -->
-                    <div class="p-6">
-                        <h2 class="text-2xl font-bold text-jms-blue mb-3 group-hover:text-jms-red transition-colors">
-                            L&#039;équipe                        </h2>
-                        
-                        <p class="text-gray-600 mb-4 line-clamp-4">
-                            Notre équipe est composée de jeunes professionnels passionnés et engagés, venus d&#039;horizons divers : journalisme, communication, sciences sociales, dév...                        </p>
-                        
-                        <!-- Bouton En savoir plus -->
-                        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
-                            <span class="text-jms-blue font-semibold group-hover:text-jms-red transition-colors">
-                                Découvrir
-                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform"></i>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                                            
-                <a href="initiative_section.php?slug=points-focaux" 
-                   class="group block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-jms-blue"
-                   style="animation: fadeInUp 0.6s ease-out 0.3s both;">
-                    
-                    <!-- Icône de la section -->
-                    <div class="h-48 bg-gradient-to-br from-jms-blue to-blue-800 flex items-center justify-center">
-                        <i class="fas fa-map-marker-alt text-8xl text-white opacity-90 group-hover:scale-110 transition-transform duration-500"></i>
-                    </div>
-                    
-                    <!-- Corps de la carte -->
-                    <div class="p-6">
-                        <h2 class="text-2xl font-bold text-jms-blue mb-3 group-hover:text-jms-red transition-colors">
-                            Les points focaux                        </h2>
-                        
-                        <p class="text-gray-600 mb-4 line-clamp-4">
-                            Nos points focaux sont des jeunes leaders présents dans différentes villes et régions. Ils animent nos activités localement, mobilisent les jeunes et ...                        </p>
-                        
-                        <!-- Bouton En savoir plus -->
-                        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
-                            <span class="text-jms-blue font-semibold group-hover:text-jms-red transition-colors">
-                                Découvrir
-                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform"></i>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                                            
-                <a href="initiative_section.php?slug=anciens" 
-                   class="group block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-jms-blue"
-                   style="animation: fadeInUp 0.6s ease-out 0.35s both;">
-                    
-                    <!-- Icône de la section -->
-                    <div class="h-48 bg-gradient-to-br from-jms-blue to-blue-800 flex items-center justify-center">
-                        <i class="fas fa-star text-8xl text-white opacity-90 group-hover:scale-110 transition-transform duration-500"></i>
-                    </div>
-                    
-                    <!-- Corps de la carte -->
-                    <div class="p-6">
-                        <h2 class="text-2xl font-bold text-jms-blue mb-3 group-hover:text-jms-red transition-colors">
-                            Ils ont fait JMS                        </h2>
-                        
-                        <p class="text-gray-600 mb-4 line-clamp-4">
-                            De nombreux jeunes sont passés par JMS et ont marqué leur engagement citoyen. Certains sont devenus journalistes, activistes, entrepreneurs sociaux ou...                        </p>
-                        
-                        <!-- Bouton En savoir plus -->
-                        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
-                            <span class="text-jms-blue font-semibold group-hover:text-jms-red transition-colors">
-                                Découvrir
-                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform"></i>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                    </div>
-        
-        <!-- Section Pourquoi JMS -->
-        <div class="mt-16 p-8 bg-gradient-to-br from-jms-blue to-blue-800 rounded-xl shadow-xl text-white">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-6 text-center">
-                    <i class="fas fa-star mr-2"></i>Pourquoi JMS Afrique ?
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                    <div class="text-center">
-                        <div class="text-5xl mb-3">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Communauté engagée</h3>
-                        <p class="text-blue-100">Un réseau de jeunes citoyens actifs</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-5xl mb-3">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Formation continue</h3>
-                        <p class="text-blue-100">Développez vos compétences citoyennes</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-5xl mb-3">
-                            <i class="fas fa-hands-helping"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Impact réel</h3>
-                        <p class="text-blue-100">Contribuez au changement social</p>
-                    </div>
-                </div>
+                <nav class="hidden md:flex gap-6">
+                    <a href="menu.html" class="hover:text-jms-red transition font-semibold">Nouvelles</a>
+                    <a href="programmes.html" class="hover:text-jms-red transition font-semibold">Programmes</a>
+                    <a href="initiative.html" class="hover:text-jms-red transition font-semibold">Initiative</a>
+                    <a href="rejoindre.html" class="hover:text-jms-red transition font-semibold">Rejoindre</a>
+                    <a href="reseau.html" class="hover:text-jms-red transition font-semibold">Réseau</a>
+                    <a href="bibliotheque.html" class="hover:text-jms-red transition font-semibold">Bibliothèque</a>
+                </nav>
             </div>
         </div>
-
-        <!-- Section Contact -->
-        <div class="mt-12 p-8 bg-white rounded-xl shadow-lg border-l-4 border-jms-red">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl font-bold text-jms-blue mb-4">
-                    <i class="fas fa-envelope mr-2"></i>Rejoignez-nous !
-                </h2>
-                <p class="mb-6 text-gray-600 text-lg">
-                    Vous souhaitez faire partie de l'initiative JMS Afrique ? Contactez-nous dès maintenant.
-                </p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="https://wa.me/message/TWROZBT5EFWPK1" target="_blank" rel="noopener" 
-                       class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
-                        <i class="fab fa-whatsapp text-2xl"></i>
-                        <span>Contactez-nous sur WhatsApp</span>
-                    </a>
-                    <a href="mailto:jeunesmediasetsociete@gmail.com" 
-                       class="inline-flex items-center gap-2 bg-jms-blue hover:bg-blue-800 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
-                        <i class="fas fa-envelope text-2xl"></i>
-                        <span>Envoyez-nous un email</span>
-                    </a>
-                    <a href="rejoindre.html" 
-                       class="inline-flex items-center gap-2 bg-jms-red hover:bg-red-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
-                        <i class="fas fa-user-plus text-2xl"></i>
-                        <span>Nous Rejoindre</span>
-                    </a>
-                </div>
+    </header>
+    
+    <!-- Contenu Principal -->
+    <main class="flex-grow">
+        <div class="container mx-auto px-6 py-12">
+    <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-jms-blue mb-4">L'Initiative JMS</h1>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">Découvrez notre initiative citoyenne.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">        <a href="initiative_section-en-bref.html" class="block bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition border border-gray-100 hover:border-jms-blue group">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-jms-blue transition">
+                <i class="fas fa-info-circle text-3xl text-jms-blue group-hover:text-white transition"></i>
             </div>
-        </div>
-
+            <h3 class="text-xl font-bold text-jms-blue mb-2">En bref</h3>
+            <span class="text-jms-red text-sm font-semibold">En savoir plus <i class="fas fa-arrow-right ml-1"></i></span>
+        </a>        <a href="initiative_section-mission.html" class="block bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition border border-gray-100 hover:border-jms-blue group">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-jms-blue transition">
+                <i class="fas fa-bullseye text-3xl text-jms-blue group-hover:text-white transition"></i>
+            </div>
+            <h3 class="text-xl font-bold text-jms-blue mb-2">La mission</h3>
+            <span class="text-jms-red text-sm font-semibold">En savoir plus <i class="fas fa-arrow-right ml-1"></i></span>
+        </a>        <a href="initiative_section-pays-couverts.html" class="block bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition border border-gray-100 hover:border-jms-blue group">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-jms-blue transition">
+                <i class="fas fa-globe-africa text-3xl text-jms-blue group-hover:text-white transition"></i>
+            </div>
+            <h3 class="text-xl font-bold text-jms-blue mb-2">Pays couverts</h3>
+            <span class="text-jms-red text-sm font-semibold">En savoir plus <i class="fas fa-arrow-right ml-1"></i></span>
+        </a>        <a href="initiative_section-equipe.html" class="block bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition border border-gray-100 hover:border-jms-blue group">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-jms-blue transition">
+                <i class="fas fa-users text-3xl text-jms-blue group-hover:text-white transition"></i>
+            </div>
+            <h3 class="text-xl font-bold text-jms-blue mb-2">L'équipe</h3>
+            <span class="text-jms-red text-sm font-semibold">En savoir plus <i class="fas fa-arrow-right ml-1"></i></span>
+        </a>        <a href="initiative_section-points-focaux.html" class="block bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition border border-gray-100 hover:border-jms-blue group">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-jms-blue transition">
+                <i class="fas fa-map-marker-alt text-3xl text-jms-blue group-hover:text-white transition"></i>
+            </div>
+            <h3 class="text-xl font-bold text-jms-blue mb-2">Les points focaux</h3>
+            <span class="text-jms-red text-sm font-semibold">En savoir plus <i class="fas fa-arrow-right ml-1"></i></span>
+        </a></div></div>
     </main>
-
-    <!-- Animation CSS -->
-    <style>
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .line-clamp-4 {
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            line-clamp: 4;
-        }
-    </style>
-
+    
+    <!-- Footer -->
+    <footer class="bg-jms-blue text-white py-8 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center gap-6 mb-4">
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-facebook-f text-2xl"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-tiktok text-2xl"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-linkedin-in text-2xl"></i></a>
+            </div>
+            <p>&copy; 2025 JMS Afrique. Tous droits réservés.</p>
+        </div>
+    </footer>
+    
+    
+</body>
+</html>

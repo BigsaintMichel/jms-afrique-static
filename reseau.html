@@ -1,137 +1,90 @@
-
-    <main class="container mx-auto px-6 py-12 flex flex-col md:flex-row gap-10">
-
-        <!-- SIDEBAR -->
-        <aside class="w-full md:w-1/4">
-            <div class="sticky top-28 p-6 bg-gray-50 rounded-xl shadow-md">
-                <h3 class="group relative inline-block mb-4 overflow-hidden rounded-full border-2 border-jms-blue px-6 py-2 text-2xl font-bold text-jms-blue pill-appear" style="animation-delay: 0.08s;">
-                    <span class="absolute inset-0 translate-y-full bg-jms-red transition-transform duration-500 ease-out group-hover:translate-y-0"></span>
-                    <span class="relative z-10 transition-colors duration-300 group-hover:text-white">Réseau</span>
-                </h3>
-                <ul class="space-y-2 text-gray-700">
-                    <li><a href="#ong" class="block hover:text-red-600 transition">ONG / Associations</a></li>
-                    <li><a href="#talents" class="block hover:text-red-600 transition">Jeunes talents</a></li>
-                    <li><a href="#professionnels" class="block hover:text-red-600 transition">Jeunes professionnels</a></li>
-                </ul>
-            </div>
-        </aside>
-
-        <!-- CONTENU PRINCIPAL -->
-        <section class="w-full md:w-3/4">
-            <h1 class="group relative inline-block mb-8 overflow-hidden rounded-full border-2 border-jms-blue px-8 py-3 text-3xl md:text-4xl font-bold text-jms-blue pill-appear" style="animation-delay: 0.05s;">
-                <span class="absolute inset-0 translate-y-full bg-jms-red transition-transform duration-500 ease-out group-hover:translate-y-0"></span>
-                <span class="relative z-10 transition-colors duration-300 group-hover:text-white">Notre Réseau</span>
-            </h1>
-
-            <!-- Section 1: ONG / Associations -->
-            <article id="ong" class="mb-10">
-                <h2 class="group relative inline-block mb-4 overflow-hidden rounded-full border-2 border-jms-blue px-6 py-2 text-2xl font-bold text-jms-blue pill-appear" style="animation-delay: 0.12s;">
-                    <span class="absolute inset-0 translate-y-full bg-jms-red transition-transform duration-500 ease-out group-hover:translate-y-0"></span>
-                    <span class="relative z-10 transition-colors duration-300 group-hover:text-white">ONG / Associations</span>
-                </h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                        <a href="reseau_membre.php?type=ong&id=5" class="block p-6 bg-white rounded-xl shadow border hover:shadow-lg hover:border-jms-blue transition-all duration-300 group">
-                        <h3 class="group-hover:scale-105 transition-transform inline-block mb-2 overflow-hidden rounded-full border border-jms-blue px-4 py-1 text-base font-semibold text-jms-blue pill-appear" style="animation-delay: 0.22s;">
-                            <span class="relative z-10">Présentation des organisations partenaires</span>
-                        </h3>
-                        <p class="text-gray-700 mt-2 line-clamp-3">Découvrez les organisations qui collaborent avec JMS Afrique dans la promotion de la citoyenneté active et de l&#039;engagement des jeunes.</p>
-                        <div class="mt-3 text-jms-blue font-semibold group-hover:text-jms-red transition-colors">
-                            En savoir plus <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform inline-block"></i>
-                        </div>
-                    </a>
-                                        <a href="reseau_membre.php?type=ong&id=6" class="block p-6 bg-white rounded-xl shadow border hover:shadow-lg hover:border-jms-blue transition-all duration-300 group">
-                        <h3 class="group-hover:scale-105 transition-transform inline-block mb-2 overflow-hidden rounded-full border border-jms-blue px-4 py-1 text-base font-semibold text-jms-blue pill-appear" style="animation-delay: 0.26s;">
-                            <span class="relative z-10">Profil et contribution dans nos collaborations</span>
-                        </h3>
-                        <p class="text-gray-700 mt-2 line-clamp-3">Explorez les profils de nos partenaires et leur contribution spécifique dans nos différents projets et initiatives citoyennes.</p>
-                        <div class="mt-3 text-jms-blue font-semibold group-hover:text-jms-red transition-colors">
-                            En savoir plus <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform inline-block"></i>
-                        </div>
-                    </a>
-                                    </div>
-            </article>
-
-            <!-- Section 2: Jeunes talents -->
-            <article id="talents" class="mb-10">
-                <h2 class="group relative inline-block mb-4 overflow-hidden rounded-full border-2 border-jms-blue px-6 py-2 text-2xl font-bold text-jms-blue pill-appear" style="animation-delay: 0.18s;">
-                    <span class="absolute inset-0 translate-y-full bg-jms-red transition-transform duration-500 ease-out group-hover:translate-y-0"></span>
-                    <span class="relative z-10 transition-colors duration-300 group-hover:text-white">Jeunes talents</span>
-                </h2>
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-                                        <a href="reseau_membre.php?type=talent&id=1" class="block text-center group">
-                                                    <div class="w-full rounded-xl shadow bg-gradient-to-br from-jms-blue to-jms-red flex items-center justify-center group-hover:scale-105 transition-transform duration-300" style="aspect-ratio: 1/1;">
-                                <i class="fas fa-user text-white text-6xl"></i>
-                            </div>
-                                                <div class="mt-2 font-semibold text-blue-900 group-hover:text-jms-red transition-colors">Awa K.</div>
-                        <div class="text-sm text-gray-600">Poétesse &amp; podcasteuse</div>
-                    </a>
-                                        <a href="reseau_membre.php?type=talent&id=2" class="block text-center group">
-                                                    <div class="w-full rounded-xl shadow bg-gradient-to-br from-jms-blue to-jms-red flex items-center justify-center group-hover:scale-105 transition-transform duration-300" style="aspect-ratio: 1/1;">
-                                <i class="fas fa-user text-white text-6xl"></i>
-                            </div>
-                                                <div class="mt-2 font-semibold text-blue-900 group-hover:text-jms-red transition-colors">Ibrahim S.</div>
-                        <div class="text-sm text-gray-600">Photographe social</div>
-                    </a>
-                                        <a href="reseau_membre.php?type=talent&id=7" class="block text-center group">
-                                                    <div class="w-full rounded-xl shadow bg-gradient-to-br from-jms-blue to-jms-red flex items-center justify-center group-hover:scale-105 transition-transform duration-300" style="aspect-ratio: 1/1;">
-                                <i class="fas fa-user text-white text-6xl"></i>
-                            </div>
-                                                <div class="mt-2 font-semibold text-blue-900 group-hover:text-jms-red transition-colors">Sara D.</div>
-                        <div class="text-sm text-gray-600">Illustratrice</div>
-                    </a>
-                                        <a href="reseau_membre.php?type=talent&id=4" class="block text-center group">
-                                                    <div class="w-full rounded-xl shadow bg-gradient-to-br from-jms-blue to-jms-red flex items-center justify-center group-hover:scale-105 transition-transform duration-300" style="aspect-ratio: 1/1;">
-                                <i class="fas fa-user text-white text-6xl"></i>
-                            </div>
-                                                <div class="mt-2 font-semibold text-blue-900 group-hover:text-jms-red transition-colors">Yao M.</div>
-                        <div class="text-sm text-gray-600">Beatmaker</div>
-                    </a>
-                                    </div>
-            </article>
-
-            <!-- Section 3: Jeunes professionnels -->
-            <article id="professionnels" class="mb-10">
-                <h2 class="group relative inline-block mb-4 overflow-hidden rounded-full border-2 border-jms-blue px-6 py-2 text-2xl font-bold text-jms-blue pill-appear" style="animation-delay: 0.24s;">
-                    <span class="absolute inset-0 translate-y-full bg-jms-red transition-transform duration-500 ease-out group-hover:translate-y-0"></span>
-                    <span class="relative z-10 transition-colors duration-300 group-hover:text-white">Jeunes professionnels</span>
-                </h2>
-                <div class="space-y-4">
-                                        <a href="reseau_membre.php?type=pro&id=4" class="block p-5 bg-gray-50 rounded-xl border hover:bg-white hover:border-jms-blue hover:shadow-lg transition-all duration-300 group">
-                        <div class="font-semibold text-blue-900 group-hover:text-jms-red transition-colors">Aïcha B. – Analyste des politiques publiques</div>
-                        <div class="text-sm text-gray-700">Compétences: data policy, suivi-évaluation, plaidoyer.</div>
-                        <div class="mt-2 text-jms-blue font-semibold text-sm group-hover:text-jms-red transition-colors">
-                            Voir le profil <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform inline-block"></i>
-                        </div>
-                    </a>
-                                        <a href="reseau_membre.php?type=pro&id=2" class="block p-5 bg-gray-50 rounded-xl border hover:bg-white hover:border-jms-blue hover:shadow-lg transition-all duration-300 group">
-                        <div class="font-semibold text-blue-900 group-hover:text-jms-red transition-colors">Moussa T. – Ingénieur civic tech</div>
-                        <div class="text-sm text-gray-700">Compétences: open data, outils participatifs, accessibilité.</div>
-                        <div class="mt-2 text-jms-blue font-semibold text-sm group-hover:text-jms-red transition-colors">
-                            Voir le profil <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform inline-block"></i>
-                        </div>
-                    </a>
-                                        <a href="reseau_membre.php?type=pro&id=6" class="block p-5 bg-gray-50 rounded-xl border hover:bg-white hover:border-jms-blue hover:shadow-lg transition-all duration-300 group">
-                        <div class="font-semibold text-blue-900 group-hover:text-jms-red transition-colors">Nadia K. – Juriste</div>
-                        <div class="text-sm text-gray-700">Compétences: droits humains, médiation, gouvernance locale.</div>
-                        <div class="mt-2 text-jms-blue font-semibold text-sm group-hover:text-jms-red transition-colors">
-                            Voir le profil <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform inline-block"></i>
-                        </div>
-                    </a>
-                                    </div>
-            </article>
-
-        </section>
-
-    </main>
-
-    <!-- Styles CSS -->
-    <style>
-        .line-clamp-3 {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            line-clamp: 3;
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réseau - JMS Afrique</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'jms-blue': '#0D2A4F',
+                        'jms-red': '#dc2626',
+                    }
+                }
+            }
         }
-    </style>
-
+    </script>
+    
+</head>
+<body class="bg-gray-50 font-sans flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-jms-blue text-white py-4 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3 hover:opacity-90 transition">
+                    <img src="assets/images/logo.png" alt="JMS Logo" class="h-12">
+                    <span class="text-xl font-bold">JMS Afrique</span>
+                </a>
+                <nav class="hidden md:flex gap-6">
+                    <a href="menu.html" class="hover:text-jms-red transition font-semibold">Nouvelles</a>
+                    <a href="programmes.html" class="hover:text-jms-red transition font-semibold">Programmes</a>
+                    <a href="initiative.html" class="hover:text-jms-red transition font-semibold">Initiative</a>
+                    <a href="rejoindre.html" class="hover:text-jms-red transition font-semibold">Rejoindre</a>
+                    <a href="reseau.html" class="hover:text-jms-red transition font-semibold">Réseau</a>
+                    <a href="bibliotheque.html" class="hover:text-jms-red transition font-semibold">Bibliothèque</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Contenu Principal -->
+    <main class="flex-grow">
+        <div class="container mx-auto px-6 py-12">
+    <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-jms-blue mb-4">Notre Réseau</h1>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">Découvrez notre communauté grandissante.</p>
+    </div>
+    
+    <div class="space-y-12">
+        <section>
+            <h2 class="text-2xl font-bold text-jms-blue mb-6 border-b pb-2">ONG / Associations</h2>
+            <div class="bg-white rounded-xl shadow p-6">
+                <p class="text-gray-700">Liste des ONG partenaires...</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2 class="text-2xl font-bold text-jms-blue mb-6 border-b pb-2">Jeunes Talents</h2>
+            <div class="bg-white rounded-xl shadow p-6">
+                <p class="text-gray-700">Nos jeunes talents...</p>
+            </div>
+        </section>
+    </div>
+</div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-jms-blue text-white py-8 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center gap-6 mb-4">
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-facebook-f text-2xl"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-tiktok text-2xl"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-linkedin-in text-2xl"></i></a>
+            </div>
+            <p>&copy; 2025 JMS Afrique. Tous droits réservés.</p>
+        </div>
+    </footer>
+    
+    
+</body>
+</html>

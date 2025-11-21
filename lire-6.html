@@ -1,208 +1,152 @@
-
-<style>
-    /* Style pour le lecteur de livre */
-    .reader-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem;
-    }
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mémo Citoyen</title>
     
-    .book-reader {
-        background: #f5f5f5;
-        border-radius: 12px;
-        padding: 2rem;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        perspective: 2000px;
-        perspective-origin: center;
-    }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     
-    /* Conteneur de la page avec effet 3D */
-    #pdf-container {
-        position: relative;
-        width: 100%;
-        max-width: 900px;
-        margin: 0 auto;
-        transform-style: preserve-3d;
-    }
-    
-    /* Canvas de la page avec effet de livre */
-    #pdf-canvas {
-        width: 100%;
-        max-width: 900px;
-        margin: 0 auto;
-        display: block;
-        background: white;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-        border-radius: 8px;
-        transform-origin: left center;
-        transform-style: preserve-3d;
-        transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-    }
-    
-    /* Animation de feuilletage vers la droite (page suivante) */
-    #pdf-canvas.page-turn-right {
-        animation: pageTurnRight 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
-    }
-    
-    /* Animation de feuilletage vers la gauche (page précédente) */
-    #pdf-canvas.page-turn-left {
-        animation: pageTurnLeft 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
-    }
-    
-    @keyframes pageTurnRight {
-        0% {
-            transform: perspective(2000px) rotateY(0deg) translateZ(0px);
-            opacity: 1;
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'jms-blue': '#0D2A4F',
+                        'jms-red': '#dc2626',
+                    }
+                }
+            }
         }
-        50% {
-            transform: perspective(2000px) rotateY(-90deg) translateZ(50px);
-            opacity: 0.5;
-        }
-        51% {
-            transform: perspective(2000px) rotateY(90deg) translateZ(50px);
-            opacity: 0.5;
-        }
-        100% {
-            transform: perspective(2000px) rotateY(0deg) translateZ(0px);
-            opacity: 1;
-        }
-    }
+    </script>
     
-    @keyframes pageTurnLeft {
-        0% {
-            transform: perspective(2000px) rotateY(0deg) translateZ(0px);
-            opacity: 1;
-        }
-        50% {
-            transform: perspective(2000px) rotateY(90deg) translateZ(50px);
-            opacity: 0.5;
-        }
-        51% {
-            transform: perspective(2000px) rotateY(-90deg) translateZ(50px);
-            opacity: 0.5;
-        }
-        100% {
-            transform: perspective(2000px) rotateY(0deg) translateZ(0px);
-            opacity: 1;
-        }
-    }
+</head>
+<body class="bg-gray-50 font-sans flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-jms-blue text-white py-4 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3 hover:opacity-90 transition">
+                    <img src="assets/images/logo.png" alt="JMS Logo" class="h-12">
+                    <span class="text-xl font-bold">JMS Afrique</span>
+                </a>
+                <nav class="hidden md:flex gap-6">
+                    <a href="menu.html" class="hover:text-jms-red transition font-semibold">Nouvelles</a>
+                    <a href="programmes.html" class="hover:text-jms-red transition font-semibold">Programmes</a>
+                    <a href="initiative.html" class="hover:text-jms-red transition font-semibold">Initiative</a>
+                    <a href="rejoindre.html" class="hover:text-jms-red transition font-semibold">Rejoindre</a>
+                    <a href="reseau.html" class="hover:text-jms-red transition font-semibold">Réseau</a>
+                    <a href="bibliotheque.html" class="hover:text-jms-red transition font-semibold">Bibliothèque</a>
+                </nav>
+            </div>
+        </div>
+    </header>
     
-    .reader-controls {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        margin-top: 1.5rem;
-    }
-    
-    .control-btn {
-        background: #0D2A4F;
-        color: white;
-        border: none;
-        padding: 0.75rem 1.5rem;
-        border-radius: 50px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-    
-    .control-btn:hover {
-        background: #dc2626;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-    }
-    
-    .control-btn:disabled {
-        background: #ccc;
-        cursor: not-allowed;
-        transform: none;
-    }
-    
-    .page-info {
-        background: white;
-        padding: 0.75rem 1.5rem;
-        border-radius: 50px;
-        font-weight: bold;
-        color: #0D2A4F;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-    .book-info {
-        text-align: center;
-        margin-bottom: 2rem;
-    }
-    
-    .book-title {
-        font-size: 2rem;
-        font-weight: bold;
-        color: #0D2A4F;
-        margin-bottom: 0.5rem;
-    }
-    
-    .book-author {
-        font-size: 1.25rem;
-        color: #666;
-    }
-    
-    .back-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: #0D2A4F;
-        text-decoration: none;
-        font-weight: bold;
-        margin-bottom: 2rem;
-        padding: 0.75rem 1.5rem;
-        border: 2px solid #0D2A4F;
-        border-radius: 50px;
-        transition: all 0.3s;
-    }
-    
-    .back-link:hover {
-        background: #0D2A4F;
-        color: white;
-        transform: translateX(-5px);
-    }
-    
-    /* Animation de chargement */
-    .loading {
-        text-align: center;
-        padding: 3rem;
-        color: #0D2A4F;
-    }
-    
-    .loading i {
-        font-size: 3rem;
-        animation: spin 1s linear infinite;
-    }
-    
-    @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-</style>
-
-<main class="reader-container">
-    <a href="bibliotheque.html" class="back-link">
-        <i class="fas fa-arrow-left"></i>
-        Retour à la bibliothèque
+    <!-- Contenu Principal -->
+    <main class="flex-grow">
+        <div class="container mx-auto px-6 py-8">
+    <a href="bibliotheque.html" class="inline-flex items-center gap-2 text-jms-blue hover:text-jms-red mb-6">
+        <i class="fas fa-arrow-left"></i> Retour à la bibliothèque
     </a>
     
-    <div class="book-info">
-        <h1 class="book-title">Mémo Citoyen</h1>
-                    <p class="book-author">Par JMS Afrique</p>
+    <div class="bg-white rounded-xl shadow-2xl p-4 md:p-8 max-w-5xl mx-auto">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold text-jms-blue">Mémo Citoyen</h1>
+            <div class="flex gap-2">
+                <button id="prev" class="bg-jms-blue text-white px-4 py-2 rounded hover:bg-jms-red transition"><i class="fas fa-chevron-left"></i></button>
+                <span id="page_num" class="bg-gray-100 px-4 py-2 rounded font-mono">1</span> / <span id="page_count" class="bg-gray-100 px-4 py-2 rounded font-mono">--</span>
+                <button id="next" class="bg-jms-blue text-white px-4 py-2 rounded hover:bg-jms-red transition"><i class="fas fa-chevron-right"></i></button>
             </div>
+        </div>
+        
+        <div class="relative bg-gray-100 rounded overflow-hidden aspect-[3/4] md:aspect-[16/9] flex items-center justify-center">
+            <canvas id="the-canvas" class="shadow-xl max-h-full"></canvas>
+        </div>
+    </div>
+</div>
+    </main>
     
-    <div class="book-reader">
-                    <div style="text-align: center; padding: 3rem;">
-                <i class="fas fa-book-open" style="font-size: 4rem; color: #ccc; margin-bottom: 1rem;"></i>
-                <p style="color: #666; font-size: 1.25rem;">Fichier non disponible pour ce livre.</p>
-                <p style="color: #999; margin-top: 0.5rem;">Le fichier PDF n'a pas été uploadé ou est introuvable.</p>
+    <!-- Footer -->
+    <footer class="bg-jms-blue text-white py-8 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center gap-6 mb-4">
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-facebook-f text-2xl"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-tiktok text-2xl"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-linkedin-in text-2xl"></i></a>
             </div>
-            </div>
-</main>
+            <p>&copy; 2025 JMS Afrique. Tous droits réservés.</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+    
+    var url = '';
+    var pdfDoc = null,
+        pageNum = 1,
+        pageRendering = false,
+        pageNumPending = null,
+        scale = 1.5,
+        canvas = document.getElementById('the-canvas'),
+        ctx = canvas.getContext('2d');
 
+    function renderPage(num) {
+        pageRendering = true;
+        pdfDoc.getPage(num).then(function(page) {
+            var viewport = page.getViewport({scale: scale});
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
 
+            var renderContext = {
+                canvasContext: ctx,
+                viewport: viewport
+            };
+            var renderTask = page.render(renderContext);
+
+            renderTask.promise.then(function() {
+                pageRendering = false;
+                if (pageNumPending !== null) {
+                    renderPage(pageNumPending);
+                    pageNumPending = null;
+                }
+            });
+        });
+        document.getElementById('page_num').textContent = num;
+    }
+
+    function queueRenderPage(num) {
+        if (pageRendering) {
+            pageNumPending = num;
+        } else {
+            renderPage(num);
+        }
+    }
+
+    function onPrevPage() {
+        if (pageNum <= 1) return;
+        pageNum--;
+        queueRenderPage(pageNum);
+    }
+    document.getElementById('prev').addEventListener('click', onPrevPage);
+
+    function onNextPage() {
+        if (pageNum >= pdfDoc.numPages) return;
+        pageNum++;
+        queueRenderPage(pageNum);
+    }
+    document.getElementById('next').addEventListener('click', onNextPage);
+
+    pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
+        pdfDoc = pdfDoc_;
+        document.getElementById('page_count').textContent = pdfDoc.numPages;
+        renderPage(pageNum);
+    });
+</script>
+</body>
+</html>

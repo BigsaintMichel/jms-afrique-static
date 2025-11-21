@@ -1,184 +1,90 @@
-
-    <!-- Icône WhatsApp fixe -->
-    <a href="https://wa.me/message/TWROZBT5EFWPK1" aria-label="WhatsApp JMS" class="whatsapp-fixed hover:opacity-90" style="position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%); z-index: 50;">
-        <i class="fab fa-whatsapp text-4xl md:text-5xl text-green-600"></i>
-    </a>
-
-    <main class="container mx-auto px-6 py-12">
-
-        <!-- Titre principal -->
-        <div class="text-center mb-12">
-            <h1 class="group relative inline-block mb-4 overflow-hidden rounded-full border-2 border-jms-blue px-8 py-3 text-3xl md:text-5xl font-bold text-jms-blue pill-appear">
-                <span class="absolute inset-0 translate-y-full bg-jms-red transition-transform duration-500 ease-out group-hover:translate-y-0"></span>
-                <span class="relative z-10 transition-colors duration-300 group-hover:text-white">
-                    <i class="fas fa-user-plus"></i> Rejoindre JMS Afrique
-                </span>
-            </h1>
-            <p class="text-gray-600 text-lg max-w-3xl mx-auto">
-                Découvrez les différentes façons de vous engager avec JMS Afrique et de contribuer à notre mission citoyenne.
-            </p>
-        </div>
-
-        <!-- Grille des options -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                                            
-                <a href="rejoindre_option-1.html" 
-                   class="group block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-jms-blue"
-                   style="animation: fadeInUp 0.6s ease-out 0.1s both;">
-                    
-                    <!-- En-tête de la carte avec icône -->
-                    <div class="bg-gradient-to-br from-jms-blue to-blue-800 p-6 text-white">
-                        <div class="text-5xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <h2 class="text-2xl font-bold">
-                            Stage                        </h2>
-                    </div>
-                    
-                    <!-- Corps de la carte -->
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-4 line-clamp-3">
-                            je cherche un dev                        </p>
-                        
-                        <!-- Bouton En savoir plus -->
-                        <div class="flex items-center justify-between">
-                            <span class="text-jms-blue font-semibold group-hover:text-jms-red transition-colors">
-                                En savoir plus
-                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform"></i>
-                            </span>
-                        </div>
-                    </div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejoindre - JMS Afrique</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'jms-blue': '#0D2A4F',
+                        'jms-red': '#dc2626',
+                    }
+                }
+            }
+        }
+    </script>
+    
+</head>
+<body class="bg-gray-50 font-sans flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-jms-blue text-white py-4 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3 hover:opacity-90 transition">
+                    <img src="assets/images/logo.png" alt="JMS Logo" class="h-12">
+                    <span class="text-xl font-bold">JMS Afrique</span>
                 </a>
-                                            
-                <a href="rejoindre_option-2.html" 
-                   class="group block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-jms-blue"
-                   style="animation: fadeInUp 0.6s ease-out 0.15s both;">
-                    
-                    <!-- En-tête de la carte avec icône -->
-                    <div class="bg-gradient-to-br from-jms-blue to-blue-800 p-6 text-white">
-                        <div class="text-5xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-hands-helping"></i>
-                        </div>
-                        <h2 class="text-2xl font-bold">
-                            Bénévolat                        </h2>
-                    </div>
-                    
-                    <!-- Corps de la carte -->
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-4 line-clamp-3">
-                            Donnez de votre temps et de vos compétences pour soutenir nos actions citoyennes et faire la différence dans votre communauté.                        </p>
-                        
-                        <!-- Bouton En savoir plus -->
-                        <div class="flex items-center justify-between">
-                            <span class="text-jms-blue font-semibold group-hover:text-jms-red transition-colors">
-                                En savoir plus
-                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform"></i>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                                            
-                <a href="rejoindre_option-3.html" 
-                   class="group block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-jms-blue"
-                   style="animation: fadeInUp 0.6s ease-out 0.2s both;">
-                    
-                    <!-- En-tête de la carte avec icône -->
-                    <div class="bg-gradient-to-br from-jms-blue to-blue-800 p-6 text-white">
-                        <div class="text-5xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-eye"></i>
-                        </div>
-                        <h2 class="text-2xl font-bold">
-                            Immersion                        </h2>
-                    </div>
-                    
-                    <!-- Corps de la carte -->
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-4 line-clamp-3">
-                            Découvrez nos activités en immersion totale et vivez l&#039;expérience JMS de l&#039;intérieur pendant quelques jours.                        </p>
-                        
-                        <!-- Bouton En savoir plus -->
-                        <div class="flex items-center justify-between">
-                            <span class="text-jms-blue font-semibold group-hover:text-jms-red transition-colors">
-                                En savoir plus
-                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform"></i>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                                            
-                <a href="rejoindre_option-4.html" 
-                   class="group block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-jms-blue"
-                   style="animation: fadeInUp 0.6s ease-out 0.25s both;">
-                    
-                    <!-- En-tête de la carte avec icône -->
-                    <div class="bg-gradient-to-br from-jms-blue to-blue-800 p-6 text-white">
-                        <div class="text-5xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-tasks"></i>
-                        </div>
-                        <h2 class="text-2xl font-bold">
-                            Mission                        </h2>
-                    </div>
-                    
-                    <!-- Corps de la carte -->
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-4 line-clamp-3">
-                            je cherche un dev pour un projet                        </p>
-                        
-                        <!-- Bouton En savoir plus -->
-                        <div class="flex items-center justify-between">
-                            <span class="text-jms-blue font-semibold group-hover:text-jms-red transition-colors">
-                                En savoir plus
-                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform"></i>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                    </div>
-        
-        <!-- Section Contact général -->
-        <div class="mt-12 p-8 bg-gradient-to-br from-jms-blue to-blue-800 rounded-xl shadow-xl text-white">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-4">
-                    <i class="fas fa-envelope mr-2"></i>Besoin de plus d'informations ?
-                </h2>
-                <p class="mb-6 text-blue-100 text-lg">
-                    Notre équipe est à votre disposition pour répondre à toutes vos questions et vous accompagner dans votre démarche.
-                </p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="https://wa.me/message/TWROZBT5EFWPK1" target="_blank" rel="noopener" 
-                       class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
-                        <i class="fab fa-whatsapp text-2xl"></i>
-                        <span>Contactez-nous sur WhatsApp</span>
-                    </a>
-                    <a href="mailto:jeunesmediasetsociete@gmail.com" 
-                       class="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-jms-blue px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
-                        <i class="fas fa-envelope text-2xl"></i>
-                        <span>Envoyez-nous un email</span>
-                    </a>
-                </div>
+                <nav class="hidden md:flex gap-6">
+                    <a href="menu.html" class="hover:text-jms-red transition font-semibold">Nouvelles</a>
+                    <a href="programmes.html" class="hover:text-jms-red transition font-semibold">Programmes</a>
+                    <a href="initiative.html" class="hover:text-jms-red transition font-semibold">Initiative</a>
+                    <a href="rejoindre.html" class="hover:text-jms-red transition font-semibold">Rejoindre</a>
+                    <a href="reseau.html" class="hover:text-jms-red transition font-semibold">Réseau</a>
+                    <a href="bibliotheque.html" class="hover:text-jms-red transition font-semibold">Bibliothèque</a>
+                </nav>
             </div>
         </div>
-
+    </header>
+    
+    <!-- Contenu Principal -->
+    <main class="flex-grow">
+        <div class="container mx-auto px-6 py-12">
+    <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-jms-blue mb-4">Rejoindre JMS Afrique</h1>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">Engagez-vous avec nous pour faire la différence.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">        <a href="rejoindre_option-1.html" class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition border-l-4 border-jms-blue hover:border-jms-red">
+            <h3 class="text-2xl font-bold text-jms-blue mb-4">Stage</h3>
+            <p class="text-gray-600 mb-6 line-clamp-3">je cherche un dev</p>
+            <span class="inline-block bg-jms-blue text-white px-6 py-2 rounded-full text-sm font-semibold">Je m'engage</span>
+        </a>        <a href="rejoindre_option-2.html" class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition border-l-4 border-jms-blue hover:border-jms-red">
+            <h3 class="text-2xl font-bold text-jms-blue mb-4">Bénévolat</h3>
+            <p class="text-gray-600 mb-6 line-clamp-3">Donnez de votre temps et de vos compétences pour soutenir nos actions citoyennes et faire la différence dans votre communauté.</p>
+            <span class="inline-block bg-jms-blue text-white px-6 py-2 rounded-full text-sm font-semibold">Je m'engage</span>
+        </a>        <a href="rejoindre_option-3.html" class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition border-l-4 border-jms-blue hover:border-jms-red">
+            <h3 class="text-2xl font-bold text-jms-blue mb-4">Immersion</h3>
+            <p class="text-gray-600 mb-6 line-clamp-3">Découvrez nos activités en immersion totale et vivez l'expérience JMS de l'intérieur pendant quelques jours.</p>
+            <span class="inline-block bg-jms-blue text-white px-6 py-2 rounded-full text-sm font-semibold">Je m'engage</span>
+        </a>        <a href="rejoindre_option-4.html" class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition border-l-4 border-jms-blue hover:border-jms-red">
+            <h3 class="text-2xl font-bold text-jms-blue mb-4">Mission</h3>
+            <p class="text-gray-600 mb-6 line-clamp-3">je cherche un dev pour un projet</p>
+            <span class="inline-block bg-jms-blue text-white px-6 py-2 rounded-full text-sm font-semibold">Je m'engage</span>
+        </a></div></div>
     </main>
-
-    <!-- Animation CSS -->
-    <style>
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .line-clamp-3 {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-    </style>
-
+    
+    <!-- Footer -->
+    <footer class="bg-jms-blue text-white py-8 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center gap-6 mb-4">
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-facebook-f text-2xl"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-tiktok text-2xl"></i></a>
+                <a href="#" class="hover:text-jms-red transition"><i class="fab fa-linkedin-in text-2xl"></i></a>
+            </div>
+            <p>&copy; 2025 JMS Afrique. Tous droits réservés.</p>
+        </div>
+    </footer>
+    
+    
+</body>
+</html>
