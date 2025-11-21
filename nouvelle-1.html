@@ -87,8 +87,33 @@
             z-index: 10;
             transition: color 0.3s;
         }
-        .pill-appear:hover span.text {
-            color: white;
+        /* Style Pilule Animée (Menu Overlay) - Effet Remplissage */
+        .menu-btn-fill {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+        .menu-btn-fill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0D2A4F; /* jms-blue */
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Animation fluide */
+            z-index: -1;
+            border-radius: 9999px; /* Full rounded pour suivre le bouton */
+        }
+        .menu-btn-fill:hover::before {
+            transform: scaleX(1);
+        }
+        .menu-btn-fill:hover {
+            color: white !important;
+            border-color: #0D2A4F;
         }
     </style>
     
@@ -137,33 +162,33 @@
         </div>
     </header>
 
-    <!-- Menu Overlay Plein Écran (Aligné Gauche + Flou) -->
-    <div id="mobileMenu" class="fixed inset-0 z-[60] bg-white/80 backdrop-blur-xl flex flex-col items-start justify-center opacity-0 pointer-events-none transition-opacity duration-500 pl-10 md:pl-24">
+    <!-- Menu Overlay Plein Écran (Aligné Gauche + Flou + Effet Fill) -->
+    <div id="mobileMenu" class="fixed inset-0 z-[60] bg-white/70 flex flex-col items-start justify-center opacity-0 pointer-events-none transition-opacity duration-500 pl-10 md:pl-24" style="backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);">
         
         <!-- La croix de fermeture est gérée par le bouton Menu qui change d'état -->
         
         <nav class="flex flex-col gap-5 w-full max-w-lg text-left">
             <p class="text-jms-blue uppercase tracking-widest text-sm mb-4 border-b-2 border-gray-200 pb-2 w-32">Navigation</p>
             
-            <a href="index.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
+            <a href="index.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue menu-btn-fill w-full md:w-auto text-left">
                 Accueil
             </a>
-            <a href="menu.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
+            <a href="menu.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue menu-btn-fill w-full md:w-auto text-left">
                 Nouvelles
             </a>
-            <a href="programmes.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
+            <a href="programmes.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue menu-btn-fill w-full md:w-auto text-left">
                 Les Programmes
             </a>
-            <a href="initiative.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
+            <a href="initiative.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue menu-btn-fill w-full md:w-auto text-left">
                 L'Initiative
             </a>
-            <a href="rejoindre.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
+            <a href="rejoindre.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue menu-btn-fill w-full md:w-auto text-left">
                 Rejoindre
             </a>
-            <a href="reseau.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
+            <a href="reseau.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue menu-btn-fill w-full md:w-auto text-left">
                 Réseau
             </a>
-            <a href="bibliotheque.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
+            <a href="bibliotheque.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue menu-btn-fill w-full md:w-auto text-left">
                 Bibliothèque
             </a>
             
