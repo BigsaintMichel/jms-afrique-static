@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Nouvelles JMS – JMS Afrique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'jms-blue': '#0D2A4F',
+                        'jms-red': '#E53E3E',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Animation d'apparition en douceur depuis la gauche */
+        @keyframes pillFadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-24px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .pill-appear {
+            animation: pillFadeInLeft 0.45s ease-out forwards;
+            padding: 0.4rem 1.4rem !important;
+        }
+
+        /* Marquee Agenda (comme sur la landing) */
+        .marquee-wrapper { position: relative; overflow: hidden; }
+        .marquee { display: inline-block; white-space: nowrap; will-change: transform; animation: marquee 12s linear infinite; }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .page-blurred main {
+            filter: blur(6px);
+        }
+
+        /* Optimisation de l'espacement de l'en-tête */
+        header {
+            margin-bottom: 0 !important;
+        }
+        
+        header nav {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+        }
+        
+        /* Bandeau Flash Infos - Espacement réduit */
+        .w-full.bg-white.border-b {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+        }
+        
+        .w-full.bg-white.border-b .container {
+            padding-top: 0.25rem !important;
+            padding-bottom: 0.25rem !important;
+        }
+        
+        /* Logo agrandi de 55% */
+        .logo-enlarged {
+            transform: scale(1.55);
+            transform-origin: left center;
+            margin-right: 2rem; /* Espace pour éviter le chevauchement */
+        }
+        
+        /* Correction débordement header sur mobile */
+        @media (max-width: 640px) {
+            body {
+                overflow-x: hidden;
+            }
+
+            header .container > div {
+                max-width: 100%;
+                overflow: hidden;
+            }
+
+            header img.h-24 {
+                height: 4rem;
+            }
+
+            header img.h-16 {
+                height: 2.25rem;
+                max-width: 18vw;
+                width: auto;
+            }
+
+            .marquee {
+                font-size: 0.875rem;
+            }
+            
+            .logo-enlarged {
+                transform: scale(1.2); /* Réduction sur mobile pour éviter débordement */
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 font-serif">
+
+    <!-- BANDEAU FLASH INFOS GLOBAL -->
+    <div class="w-full bg-white border-b border-gray-200">
+        <div class="container mx-auto px-4 py-1 flex items-center gap-3">
+            <span class="bg-jms-red text-white text-xs md:text-sm font-semibold px-3 py-1 rounded">
+                Flash Infos
+            </span>
+            <div class="marquee-wrapper flex-1">
+                <span class="marquee font-semibold text-red-600 text-xs md:text-sm uppercase">
+                    ESSAIE 2 : 🌍 Voici ce qu&#039;il faut savoir en Afrique de l&#039;Ouest francophone ce soir 
+
+🇧🇫 Le Capitaine Ibrahim Traoré, a lancé aujourd&#039;hui la 20e semaine du numérique au Burkina Faso, dédiée à l&#039;IA. Le Ghana est l&#039;un des pays d&#039;honneur invités.
+
+ 🇬🇳 L&#039;office guinéen de la Publicité annonce l&#039;interdiction formelle de toute publicité à proximité ou à l&#039;intérieur des lieux de prières (mosquée/église).
+
+🇲🇱  Le Ministère de la justice du Mali, annonce l&#039;oucerture du concours pour recruter 200 agents de surveillance pénitentiaires et d’éducation surveillée.
+
+🇹🇬 Faure Gnassingbé, &quot;Président du Conseil des Ministres&quot; au Togo, est attendu à Moscou, par le Président Vladimir Poutine de Russie, pour une visite officielle. • ESSAI 1 : test n°2 • AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13 : AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13 NOVEMBRE                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER (pages internes) -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur shadow">
+        <nav class="container mx-auto px-6 py-2">
+            <div class="flex items-center justify-between w-full space-x-4">
+                <!-- ZONE GAUCHE : Logo -->
+                <div class="flex items-center flex-shrink-0">
+                    <a href="index.php" class="flex items-center">
+                        <img src="assets/images/logo.png" class="h-24 logo-enlarged" alt="Logo JMS">
+                    </a>
+                </div>
+
+                <!-- ZONE DROITE : Burger uniquement (drapeaux réservés à l'accueil) -->
+                <div class="flex items-center justify-end space-x-4 flex-shrink-0">
+                    <button id="burgerBtn" aria-label="Ouvrir le menu" class="group relative overflow-hidden rounded-full border-2 border-jms-blue px-6 py-2 text-jms-blue transition-colors duration-300 pill-appear" style="animation-delay: 0.1s;">
+                        <span class="absolute inset-0 translate-y-full bg-jms-red transition-transform duration-500 ease-out group-hover:translate-y-0"></span>
+                        <span class="relative z-10 transition-colors duration-300 group-hover:text-white flex items-center gap-2">
+                            <i class="fas fa-bars text-xl"></i>
+                            <span class="font-bold">Menu</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- MENU OVERLAY PLEIN ÉCRAN - PILULES LIQUIDES ALIGNÉES GAUCHE -->
+        <div id="mobile-menu" class="fixed inset-0 z-50 backdrop-blur-xl flex flex-col hidden opacity-0 transition-all duration-300 ease-in-out">
+            <!-- Bouton fermer -->
+            <div class="w-full flex justify-end px-8 pt-6">
+                <button id="closeMenu" aria-label="Fermer le menu" class="text-jms-blue hover:text-jms-red text-4xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Liste de pilules alignées à gauche -->
+            <div class="flex-1 flex items-center">
+                <div class="flex flex-col items-start space-y-6 pl-10 md:pl-24">
+                    <!-- L'Initiative -->
+                    <a href="initiative.php"
+                       class="group relative block w-fit overflow-hidden rounded-full border-2 border-jms-blue px-8 py-3 text-xl md:text-2xl font-bold text-jms-blue transition-colors duration-300 pill-appear"
+                       style="animation-delay: 0.05s;">
+                        <span class="absolute inset-0 translate-y-full bg-jms-red transition-transform duration-500 ease-out group-hover:translate-y-0"></span>
+                        <span class="relative z-10 transition-colors duration-300 group-hover:text-white">L'Initiative</span>
+                    </a>
+
+                    <!-- Les Programmes -->
+                    <a href="programmes.php"
+                       class="group relative block w-fit overflow-hidden rounded-full border-2 border-jms-blue px-8 py-3 text-xl md:text-2xl font-bold text-jms-blue transition-colors duration-300 pill-appear"
+                       style="animation-delay: 0.12s;">
+                        <span class="absolute inset-0 translate-y-full bg-jms-red transition-transform duration-500 ease-out group-hover:translate-y-0"></span>
+                        <span class="relative z-10 transition-colors duration-300 group-hover:text-white">Les Programmes</span>
+                    </a>
+
+                    <!-- Rejoindre -->
+                    <a href="rejoindre.php"
+                       class="group relative block w-fit overflow-hidden rounded-full border-2 border-jms-blue px-8 py-3 text-xl md:text-2xl font-bold text-jms-blue transition-colors duration-300 pill-appear"
+                       style="animation-delay: 0.19s;">
+                        <span class="absolute inset-0 translate-y-full bg-jms-red transition-transform duration-500 ease-out group-hover:translate-y-0"></span>
+                        <span class="relative z-10 transition-colors duration-300 group-hover:text-white">Rejoindre</span>
+                    </a>
+
+                    <!-- Réseau -->
+                    <a href="reseau.php"
+                       class="group relative block w-fit overflow-hidden rounded-full border-2 border-jms-blue px-8 py-3 text-xl md:text-2xl font-bold text-jms-blue transition-colors duration-300 pill-appear"
+                       style="animation-delay: 0.26s;">
+                        <span class="absolute inset-0 translate-y-full bg-jms-red transition-transform duration-500 ease-out group-hover:translate-y-0"></span>
+                        <span class="relative z-10 transition-colors duration-300 group-hover:text-white">Réseau</span>
+                    </a>
+
+                    <!-- Bibliothèque -->
+                    <a href="bibliotheque.php"
+                       class="group relative block w-fit overflow-hidden rounded-full border-2 border-jms-blue px-8 py-3 text-xl md:text-2xl font-bold text-jms-blue transition-colors duration-300 pill-appear"
+                       style="animation-delay: 0.47s;">
+                        <span class="absolute inset-0 translate-y-full bg-jms-red transition-transform duration-500 ease-out group-hover:translate-y-0"></span>
+                        <span class="relative z-10 transition-colors duration-300 group-hover:text-white">Bibliothèque</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENU principal: Grande carte + Liste de titres -->
+    <main class="container mx-auto px-6 py-12">
+        <div class="text-center mb-8">
+            <h2 class="group relative inline-block overflow-hidden rounded-full border-2 border-jms-blue px-8 py-3 text-3xl md:text-4xl font-bold text-jms-blue pill-appear" style="animation-delay: 0.05s;">
+                <span class="absolute inset-0 translate-y-full bg-jms-blue transition-transform duration-500 ease-out group-hover:translate-y-0"></span>
+                <span class="relative z-10 transition-colors duration-300 group-hover:text-white">Les Nouvelles JMS</span>
+            </h2>
+        </div>
+
+                
+                
+        <div class="news-container flex flex-col lg:flex-row gap-8 mb-12">
+            
+            <!-- COLONNE 1 : GRANDE CARTE (60%) -->
+            <div class="lg:w-3/5">
+                                
+                <a href="nouvelle.php?id=5" class="block bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-jms-blue h-full">
+                                        <div class="h-80 overflow-hidden">
+                        <img src="uploads/news_69206f0ade16c.jpg" alt="essaie 2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                                        
+                    <div class="p-8">
+                        <div class="mb-4">
+                            <span class="px-4 py-2 bg-jms-blue text-white text-sm font-bold rounded-full uppercase">
+                                <i class="fas fa-star mr-2"></i>À la Une
+                            </span>
+                                                        <span class="ml-3 px-3 py-1 bg-gray-200 text-gray-700 text-xs font-semibold rounded-full">
+                                <i class="far fa-calendar mr-1"></i>21/11/2025                            </span>
+                                                    </div>
+                        
+                        <h2 class="text-3xl font-bold text-jms-blue mb-4">essaie 2</h2>
+                        <p class="text-gray-600 text-lg mb-6 line-clamp-4">🌍 Voici ce qu&#039;il faut savoir en Afrique de l&#039;Ouest francophone ce soir 
+
+🇧🇫 Le Capitaine Ibrahim Traoré, a lancé aujourd&#039;hui la 20e semaine du numérique au Burkina Faso, dédiée à l&#039;IA. Le Ghana est l&#039;un des pays d&#039;honneur invités.
+
+ 🇬🇳 L&#039;office g...</p>
+                        
+                        <div class="pt-6 border-t border-gray-200">
+                            <span class="text-jms-blue font-bold text-lg">
+                                Lire l'article complet <i class="fas fa-arrow-right ml-2"></i>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- COLONNE 2 : LISTE DE TITRES (40%) -->
+            <div class="lg:w-2/5">
+                <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+                    <h3 class="text-2xl font-bold text-jms-blue mb-6 pb-4 border-b-2 border-jms-blue">
+                        <i class="fas fa-list mr-2"></i>Autres Nouvelles
+                    </h3>
+                    
+                    <div class="space-y-4">
+                                                                        
+                        <a href="nouvelle.php?id=4" 
+                           class="block p-4 rounded-lg border-l-4 border-jms-blue bg-gray-50 hover:bg-blue-50 hover:shadow-md transition-all duration-300 group">
+                            <div class="flex items-start gap-3">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-2 h-2 rounded-full bg-jms-blue"></div>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-bold text-jms-blue group-hover:text-jms-red transition-colors mb-1 line-clamp-2">
+                                        essai 1                                    </h4>
+                                                                        <p class="text-xs text-gray-500">
+                                        <i class="far fa-calendar mr-1"></i>21/11/2025                                    </p>
+                                                                    </div>
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-chevron-right text-jms-blue group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                            </div>
+                        </a>
+                                                                        
+                        <a href="nouvelle.php?id=1" 
+                           class="block p-4 rounded-lg border-l-4 border-jms-blue bg-gray-50 hover:bg-blue-50 hover:shadow-md transition-all duration-300 group">
+                            <div class="flex items-start gap-3">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-2 h-2 rounded-full bg-jms-blue"></div>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-bold text-jms-blue group-hover:text-jms-red transition-colors mb-1 line-clamp-2">
+                                        AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13                                    </h4>
+                                                                        <p class="text-xs text-gray-500">
+                                        <i class="far fa-calendar mr-1"></i>20/11/2025                                    </p>
+                                                                    </div>
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-chevron-right text-jms-blue group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                            </div>
+                        </a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+            </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-blue-900 text-white py-6" style="background-color: #0D2A4F;">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-xl mb-4">Abonne-toi ou suis-nous pour ne PLUS rien manquer !</h3>
+            <div class="flex justify-center space-x-4 mb-4 text-2xl">
+                <a href="https://www.facebook.com/share/14LE77YSZtU/" target="_blank" rel="noopener noreferrer" class="social-icon" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/jms_afrique?igsh=bXFvZHBhMjQxeXVu" target="_blank" rel="noopener noreferrer" class="social-icon" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@jms_afrique?_r=1&_d=ek9klg32blka8l..." target="_blank" rel="noopener noreferrer" class="social-icon" title="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/jeunes-m%C3%A9dias-soci%C3%A9t%C3%A9/" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://x.com/Jms_afrique?t=AuNl0bI57cO3JRg48jRP8A&s=08" target="_blank" rel="noopener noreferrer" class="social-icon" title="X (Twitter)">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://whatsapp.com/channel/0029VaPhuFmAzNbyWgZxfr3l" target="_blank" rel="noopener noreferrer" class="social-icon" title="WhatsApp 1">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://whatsapp.com/channel/0029VaQfyBB7T8bURoT2im1s" target="_blank" rel="noopener noreferrer" class="social-icon" title="WhatsApp 2">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+            
+            <!-- Contact Email -->
+            <div class="mt-3 mb-3">
+                <a href="mailto:jeunesmediasetsociete@gmail.com" class="inline-flex items-center gap-2 text-blue-200 hover:text-white transition-all duration-300 text-sm">
+                    <i class="fas fa-envelope"></i>
+                    <span>jeunesmediasetsociete@gmail.com</span>
+                </a>
+            </div>
+            
+            <p class="text-blue-200 text-xs">&copy; 2025 JMS Afrique. Tous droits réservés.</p>
+            
+            <!-- Bouton connexion discret -->
+            <div class="mt-3">
+                <a href="admin/login.php" class="text-blue-300 hover:text-white text-xs opacity-50 hover:opacity-100 transition-all duration-300">
+                    <i class="fas fa-user-shield"></i> Membre de la communauté
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu burger overlay plein écran
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('closeMenu');
+        const pageBody = document.body;
+
+        function openMobileMenu() {
+            if (!mobileMenu) return;
+            mobileMenu.classList.remove('hidden');
+            // Slight delay to trigger transition
+            requestAnimationFrame(() => {
+                mobileMenu.classList.remove('opacity-0');
+            });
+            if (pageBody) {
+                pageBody.classList.add('page-blurred');
+            }
+        }
+
+        function closeMobileMenu() {
+            if (!mobileMenu) return;
+            mobileMenu.classList.add('opacity-0');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300);
+            if (pageBody) {
+                pageBody.classList.remove('page-blurred');
+            }
+        }
+
+        if (burgerBtn && mobileMenu && closeMenu) {
+            burgerBtn.addEventListener('click', openMobileMenu);
+            closeMenu.addEventListener('click', closeMobileMenu);
+
+            // Cliquer sur le fond ferme aussi le menu (mais pas sur les liens eux-mêmes)
+            mobileMenu.addEventListener('click', (e) => {
+                if (e.target === mobileMenu) {
+                    closeMobileMenu();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
