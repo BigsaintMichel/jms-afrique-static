@@ -116,52 +116,47 @@
         </div>
     </header>
 
-    <!-- Bandeau Flash Infos DÉFILANT (Ticker) -->
-    <div class="bg-red-600 text-white py-2 overflow-hidden relative z-40 border-b-4 border-jms-blue">
-        <div class="container mx-auto flex items-center">
-            <div class="bg-red-700 px-3 py-1 font-bold text-xs uppercase tracking-wider mr-4 z-10 shadow-lg whitespace-nowrap">Flash Infos</div>
-            <div class="flex-1 overflow-hidden relative h-6">
-                <div class="animate-marquee font-medium text-sm flex items-center h-full whitespace-nowrap">
-                    <span class="mr-12">🌍 Voici ce qu'il faut savoir en Afrique de l'Ouest francophone ce soir.</span>
-                    <span class="mr-12">🇧🇫 Le Capitaine Ibrahim Traoré a lancé la 20e semaine du numérique au Burkina Faso.</span>
-                    <span class="mr-12">📅 PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13.</span>
-                    <span class="mr-12">🚀 Rejoignez nos nouveaux programmes de formation citoyenne !</span>
-                </div>
+    <!-- Bandeau Flash Infos STATIQUE (Géré par JS) -->
+    <div id="flashInfoBanner" class="bg-red-600 text-white py-3 overflow-hidden relative z-40 border-b-4 border-jms-blue shadow-md">
+        <div class="container mx-auto flex items-center justify-center px-4">
+            <div class="font-bold text-base md:text-lg uppercase tracking-wide flex items-center gap-2 text-center">
+                <i class="fas fa-calendar-check"></i>
+                <span>AGENDA : PROCHAINE ACTIVITÉ JMS PRÉVUE POUR LE 13</span>
             </div>
         </div>
     </div>
 
-    <!-- Menu Overlay Plein Écran (Style Boutons Centrés) -->
-    <div id="mobileMenu" class="fixed inset-0 z-[60] bg-white/98 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500">
+    <!-- Menu Overlay Plein Écran (Aligné Gauche + Flou) -->
+    <div id="mobileMenu" class="fixed inset-0 z-[60] bg-white/80 backdrop-blur-xl flex flex-col items-start justify-center opacity-0 pointer-events-none transition-opacity duration-500 pl-10 md:pl-24">
         
         <!-- La croix de fermeture est gérée par le bouton Menu qui change d'état -->
         
-        <nav class="flex flex-col gap-4 w-full max-w-md px-6 text-center">
-            <p class="text-jms-blue uppercase tracking-widest text-sm mb-6 border-b border-gray-200 pb-4">Navigation</p>
+        <nav class="flex flex-col gap-5 w-full max-w-lg text-left">
+            <p class="text-jms-blue uppercase tracking-widest text-sm mb-4 border-b-2 border-gray-200 pb-2 w-32">Navigation</p>
             
-            <a href="index.html" class="block border-2 border-jms-blue rounded-full py-3 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:scale-105">
+            <a href="index.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
                 Accueil
             </a>
-            <a href="menu.html" class="block border-2 border-jms-blue rounded-full py-3 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:scale-105">
+            <a href="menu.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
                 Nouvelles
             </a>
-            <a href="programmes.html" class="block border-2 border-jms-blue rounded-full py-3 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:scale-105">
+            <a href="programmes.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
                 Les Programmes
             </a>
-            <a href="initiative.html" class="block border-2 border-jms-blue rounded-full py-3 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:scale-105">
+            <a href="initiative.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
                 L'Initiative
             </a>
-            <a href="rejoindre.html" class="block border-2 border-jms-blue rounded-full py-3 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:scale-105">
+            <a href="rejoindre.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
                 Rejoindre
             </a>
-            <a href="reseau.html" class="block border-2 border-jms-blue rounded-full py-3 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:scale-105">
+            <a href="reseau.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
                 Réseau
             </a>
-            <a href="bibliotheque.html" class="block border-2 border-jms-blue rounded-full py-3 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:scale-105">
+            <a href="bibliotheque.html" class="block border-2 border-jms-blue rounded-full py-3 px-8 text-xl font-bold text-jms-blue hover:bg-jms-blue hover:text-white transition transform hover:translate-x-2 w-full md:w-auto text-left">
                 Bibliothèque
             </a>
             
-            <div class="mt-8 flex justify-center gap-6 text-jms-blue text-2xl">
+            <div class="mt-8 flex justify-start gap-6 text-jms-blue text-2xl pl-4">
                 <a href="#" class="hover:text-jms-red transition"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="hover:text-jms-red transition"><i class="fab fa-instagram"></i></a>
                 <a href="#" class="hover:text-jms-red transition"><i class="fab fa-linkedin-in"></i></a>
@@ -171,7 +166,18 @@
     </div>
 
     <script>
-        // Script Gestion Menu Burger (Overlay)
+        // 1. Logique Conditionnelle Bandeau Flash Info (JS pur)
+        document.addEventListener('DOMContentLoaded', function() {
+            const banner = document.getElementById('flashInfoBanner');
+            const currentPath = window.location.pathname;
+            
+            // Si on est sur l'accueil (index.html ou racine), on cache le bandeau
+            if (currentPath.endsWith('index.html') || currentPath === '/' || currentPath.endsWith('/')) {
+                if(banner) banner.style.display = 'none';
+            }
+        });
+
+        // 2. Script Gestion Menu Burger (Overlay)
         const menuToggle = document.getElementById('menuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
         const body = document.body;
@@ -183,7 +189,7 @@
                 // Ouvrir
                 mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
                 menuToggle.innerHTML = '<span class="uppercase tracking-widest text-sm">Fermer</span><i class="fas fa-times text-xl ml-2"></i>';
-                menuToggle.classList.add('bg-jms-blue', 'text-white'); // Inverser couleurs bouton
+                menuToggle.classList.add('bg-jms-blue', 'text-white'); 
                 body.style.overflow = 'hidden';
             } else {
                 // Fermer
