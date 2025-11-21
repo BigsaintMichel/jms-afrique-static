@@ -66,17 +66,20 @@
             /* Repositionner les drapeaux pour remonter */
             header .flex {
                 justify-content: space-between;
-                gap: 0;
+                gap: 0.5rem;
             }
             
-            /* Ajuster la taille des drapeaux sur mobile */
+            /* Agrandir la bande des drapeaux sur mobile */
             header img[alt="Drapeaux"] {
-                height: 3rem !important;
+                height: 5rem !important;
+                width: auto !important;
+                max-width: 45vw !important;
             }
             
-            /* Ajuster la taille du logo sur mobile */
+            /* Réduire le logo sur mobile pour laisser place aux drapeaux */
             header img[alt="Logo JMS"] {
-                height: 12rem !important;
+                height: 10rem !important;
+                max-width: 50vw !important;
             }
         }
 
