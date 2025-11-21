@@ -83,21 +83,28 @@
     
 </head>
 <body class="bg-gray-50 font-sans flex flex-col min-h-screen">
-    <!-- Header -->
-    <header class="bg-jms-blue text-white py-4 shadow-lg sticky top-0 z-50">
+    <!-- Header Blanc -->
+    <header class="bg-white text-jms-blue py-4 shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6">
             <div class="flex items-center justify-between">
+                <!-- Logo -->
                 <a href="index.html" class="flex items-center gap-3 hover:opacity-90 transition">
-                    <img src="assets/images/logo.png" alt="JMS Logo" class="h-12">
-                    <span class="text-xl font-bold">JMS Afrique</span>
+                    <img src="assets/images/logo.png" alt="JMS Logo" class="h-16 md:h-20">
                 </a>
-                <nav class="hidden md:flex gap-6">
-                    <a href="menu.html" class="hover:text-jms-red transition font-semibold">Nouvelles</a>
-                    <a href="programmes.html" class="hover:text-jms-red transition font-semibold">Programmes</a>
-                    <a href="initiative.html" class="hover:text-jms-red transition font-semibold">Initiative</a>
-                    <a href="rejoindre.html" class="hover:text-jms-red transition font-semibold">Rejoindre</a>
-                    <a href="reseau.html" class="hover:text-jms-red transition font-semibold">Réseau</a>
-                    <a href="bibliotheque.html" class="hover:text-jms-red transition font-semibold">Bibliothèque</a>
+                
+                <!-- Navigation (Liens bleus) -->
+                <nav class="hidden md:flex gap-8 items-center">
+                    <a href="menu.html" class="font-bold text-jms-blue hover:text-jms-red transition uppercase text-sm tracking-wide">Nouvelles</a>
+                    <a href="programmes.html" class="font-bold text-jms-blue hover:text-jms-red transition uppercase text-sm tracking-wide">Programmes</a>
+                    <a href="initiative.html" class="font-bold text-jms-blue hover:text-jms-red transition uppercase text-sm tracking-wide">Initiative</a>
+                    <a href="rejoindre.html" class="font-bold text-jms-blue hover:text-jms-red transition uppercase text-sm tracking-wide">Rejoindre</a>
+                    <a href="reseau.html" class="font-bold text-jms-blue hover:text-jms-red transition uppercase text-sm tracking-wide">Réseau</a>
+                    <a href="bibliotheque.html" class="font-bold text-jms-blue hover:text-jms-red transition uppercase text-sm tracking-wide">Bibliothèque</a>
+                    
+                    <!-- Bouton Menu Mobile (visible uniquement mobile, simulé ici pour l'instant caché en desktop) -->
+                    <button class="md:hidden text-2xl text-jms-blue">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </nav>
             </div>
         </div>
